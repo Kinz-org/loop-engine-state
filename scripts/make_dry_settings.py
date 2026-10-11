@@ -2,6 +2,8 @@
 """Derive a write-proof settings file for --dry-run from the live allowlist.
 
   python scripts/make_dry_settings.py            # writes /home/kiwif/loop-engine/loop-settings.dry.json
+  python scripts/make_dry_settings.py --engine /home/kiwif/kinz-loop-engine --live claude-permissions.json
+                                                 # the KINZ laptop engine: writes claude-permissions.dry.json
   python scripts/make_dry_settings.py --check    # exit 3 if the derived file is stale
 
 The existing --dry-run only prepends "write nothing" to the prompt and trusts the model
@@ -36,9 +38,7 @@ import json
 import sys
 from pathlib import Path
 
-ENGINE = Path("/home/kiwif/loop-engine")
-LIVE = ENGINE / "loop-settings.json"
-DRY = ENGINE / "loop-settings.dry.json"
+DEFAULT_ENGINE = Path("/home/kiwif/loop-engine")
 
 # Every path by which a loop can change the world. Bare tool names match all uses.
 DENY = [
@@ -105,9 +105,7 @@ DENY = [
     "Bash(gh api --method PATCH:*)",
     "Bash(gh api --method DELETE:*)",
     # --- state writes ---
-    # state_sync.py push/lease mutate the coordination repo; pull is read-only but the
-    # rule cannot see the subcommand, so the whole script is denied for a dry run.
-    "Bash(/home/kiwif/loop-engine/.venv/bin/python:*state_sync.py*)",
+    # state_sync.py push/lease mutate the coordination repo; see deny_for() below.
     # --- shell escapes around the above ---
     "Bash(tee:*)",
     "Bash(dd:*)",
@@ -116,10 +114,16 @@ DENY = [
 ]
 
 
-def build() -> dict:
-    cfg = json.loads(LIVE.read_text())
+def deny_for(engine: Path) -> list[str]:
+    # state_sync.py push/lease mutate the coordination repo; pull is read-only but the
+    # rule cannot see the subcommand, so the whole script is denied for a dry run.
+    return DENY + [f"Bash({engine}/.venv/bin/python:*state_sync.py*)"]
+
+
+def build(engine: Path, live: Path) -> dict:
+    cfg = json.loads(live.read_text())
     perms = cfg.setdefault("permissions", {})
-    merged = list(dict.fromkeys(list(perms.get("deny", [])) + DENY))
+    merged = list(dict.fromkeys(list(perms.get("deny", [])) + deny_for(engine)))
     perms["deny"] = merged
     cfg["_generated"] = (
         "DERIVED FILE — do not edit. Regenerate with scripts/make_dry_settings.py. "
@@ -133,9 +137,14 @@ def main() -> None:
     ap = argparse.ArgumentParser()
     ap.add_argument("--check", action="store_true",
                     help="exit 3 if the derived file is missing or stale")
+    ap.add_argument("--engine", default=str(DEFAULT_ENGINE), help="the laptop engine folder")
+    ap.add_argument("--live", default="loop-settings.json", help="the allowlist file inside --engine")
     a = ap.parse_args()
 
-    want = build()
+    engine = Path(a.engine)
+    LIVE = engine / a.live
+    DRY = LIVE.with_name(LIVE.stem + ".dry.json")
+    want = build(engine, LIVE)
     if a.check:
         if not DRY.exists():
             print(f"{DRY} missing — run without --check", file=sys.stderr)
@@ -151,7 +160,7 @@ def main() -> None:
     print(f"wrote {DRY}")
     print(f"  allow: {len(want['permissions'].get('allow', []))}  "
           f"deny: {len(want['permissions']['deny'])} "
-          f"(+{len(DENY)} dry-run rules)")
+          f"(+{len(deny_for(engine))} dry-run rules)")
 
 
 if __name__ == "__main__":

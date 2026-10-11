@@ -35,7 +35,7 @@ alert when a run fails or needs him, and a weekly summary on Monday morning.
 | `kinz-vault` | KINZ · Vault gardener: Obsidian upkeep and weekly journal | Sun 06:45 | **no**, PR waits for Nassim |
 | `kinz-heartbeat` | KINZ · Heartbeat: one small fix if nothing landed today | daily 06:45 | yes |
 | `kinz-digest` | KINZ · Monday digest: the week in one page | Mon 06:45 | no |
-| `kinz-genesis` | KINZ · Genesis: new private repo every 28 days | disabled (needs a laptop timer) | no |
+| `kinz-genesis` | KINZ · Genesis: new private repo every 28 days | laptop, Wed 07:45, every 28 days from 14 Oct | no |
 | `kinz-zai` | KINZ · Z.ai session | paused | yes |
 
 The job ids were renamed on 2026-10-11 so this engine can't be mistaken for the personal one
@@ -55,8 +55,10 @@ routines UI: `loop-engine-state`, every repo in `registry.json`, and `kinz-obsid
 
 Genesis stays on the laptop because cloud sessions cannot create repositories. On the
 personal engine its prompt is `~/.claude/scheduled-tasks/repo-genesis-loop/SKILL.md`, run by
-the `loop-genesis` systemd timer. The Kinz-org copy (`kinz-genesis`) is disabled until a
-second timer, signed in to `gh` as `kinzorg-afk`, is set up on the laptop.
+the `loop-genesis` systemd timer. The Kinz-org copy (`kinz-genesis`, prompt `prompts/genesis.md`)
+runs from `~/kinz-loop-engine` on the laptop: the `kinz-genesis` systemd timer fires on Wednesdays
+at 07:45 and the prompt's 28-day gate (from 2026-10-14) decides. It uses its own logins, `gh` as
+`kinzorg-afk` and Claude on the KINZ account, and the runner refuses to start on any other account.
 
 ## Files
 

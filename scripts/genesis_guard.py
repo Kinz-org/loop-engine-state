@@ -24,6 +24,10 @@ from datetime import datetime, timedelta, timezone
 STATE_REPO = "Kinz-org/loop-engine-state"
 # Never genesis output: engine infrastructure.
 INFRA = {"loop-engine-state"}
+# Every repo created in Kinz-org on this date was copied by hand from nassim0014 during the
+# move to the organization. Three of them are marked genesis-loop because the personal
+# engine built the originals, but none is this engine's output, so they are not evidence.
+MIGRATION_DAY = "2026-10-11"
 
 
 def remote(path: str) -> dict:
@@ -52,12 +56,14 @@ def main() -> None:
         for x in repos
         if datetime.fromisoformat(x["createdAt"].replace("Z", "+00:00")) > cutoff
         and x["name"] not in excluded
+        and x["createdAt"][:10] != MIGRATION_DAY
     ]
 
     print(json.dumps({
         "guard_days": guard_days,
         "cutoff": cutoff.date().isoformat(),
         "excluded_as_not_genesis_output": sorted(excluded),
+        "excluded_as_migrated": MIGRATION_DAY,
         "blocking": blocking,
         "clear_to_proceed": not blocking,
     }, indent=2))
