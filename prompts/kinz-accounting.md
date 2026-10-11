@@ -1,6 +1,6 @@
 # Job: Kinz accounting improvement (Sun, Tue, Thu)
 
-Loop name: `cloud-kinz-improvement`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-ledger`. Read `prompts/_common.md` first; everything there applies.
 
 This is the old "Kinz repo — improvement pass" routine (`trig_01FTYzTF5d7GsEuQZ3sxuebP`, deleted
 2026-09-23), brought into the loop engine. The repo is

@@ -1,6 +1,6 @@
 # Job: daily commit (every morning, 06:45)
 
-Loop name: `cloud-daily-commit`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-heartbeat`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** Nassim's GitHub contribution graph has something every day, and each thing is a
 real improvement, not filler. It runs at 06:45, after the night's jobs, so on most days

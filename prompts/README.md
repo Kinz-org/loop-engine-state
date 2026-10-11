@@ -10,13 +10,15 @@ is a reviewed commit and not an invisible edit in a settings page.
 
 | Job | When (Tunis) | Prompt |
 |---|---|---|
-| `cloud-maintenance` | daily 01:45, first | `maintenance.md` |
-| `cloud-kinz-analyst` | Tue 01:45, the night after Monday's scrape | `kinz-analyst.md` |
-| `cloud-improvements` | Mon, Wed, Fri 01:45 | `improvements.md` |
-| `cloud-kinz-improvement` | Sun, Tue, Thu 01:45 | `kinz-accounting.md` |
-| `cloud-creative` | Sat 01:45 | `creative.md` |
-| `cloud-daily-commit` | daily 06:45, after the night jobs | `daily-commit.md` |
-| `cloud-weekly-summary` | Mon 06:45 | `weekly-summary.md` |
+| `kinz-upkeep` | daily 01:45, first | `maintenance.md` |
+| `kinz-market-watch` | Tue 01:45, the night after Monday's scrape | `kinz-analyst.md` |
+| `kinz-polish` | Mon, Wed, Fri 01:45 | `improvements.md` |
+| `kinz-ledger` | Sun, Tue, Thu 01:45 | `kinz-accounting.md` |
+| `kinz-lab` | Sat 01:45 | `creative.md` |
+| `kinz-portfolio` | Sun 01:45 | `portfolio.md` |
+| `kinz-vault` | Sun 06:45, after the portfolio review; opens a PR, never merges | `vault-gardener.md` |
+| `kinz-heartbeat` | daily 06:45, after the night jobs | `daily-commit.md` |
+| `kinz-digest` | Mon 06:45 | `weekly-summary.md` |
 
 `_common.md` holds the rules every job shares: setup, the GitHub API, branch names, the
 three merge rules, the never-list, and how to finish.
@@ -32,10 +34,8 @@ routine. The weekly summary reminds Nassim when a registry repo is missing.
 
 ## Bootstrap (the text stored in the routine)
 
+Routine "KINZ loop engine — night dispatcher" (`trig_01RZePiYwx934QeB8rUvXGiP`):
+
 ```
-You are the dispatcher of Nassim's loop engine. The repo Kinz-org/loop-engine-state is
-attached to this routine at /home/user/loop-engine-state. Update it to the latest main, then
-read prompts/_common.md and prompts/dispatch.md and follow them. If the repo is not there,
-reply only "NEEDS YOU: attach loop-engine-state and the work repos to the Loop engine
-routine" and stop.
+You are the dispatcher of the KINZ loop engine (GitHub org Kinz-org). The repo Kinz-org/loop-engine-state is attached to this routine at /home/user/loop-engine-state. Update it to the latest main, then read prompts/_common.md and prompts/dispatch.md and follow them. If the repo is not there, reply only "NEEDS YOU: attach loop-engine-state and the work repos to the KINZ loop engine routine" and stop.
 ```

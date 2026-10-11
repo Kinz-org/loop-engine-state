@@ -1,90 +1,115 @@
 {
   "version": 2,
-  "updated_at": "2026-10-09T01:35:00+00:00",
+  "updated_at": "2026-10-11T21:00:00+00:00",
   "rotation_cursor": 3,
   "loops": {
     "repo-closed-loop": {
       "last_run": "2026-09-23T15:25:00+00:00",
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-improvements."
+      "notes": "Retired 2026-09-23; replaced by kinz-polish."
     },
     "repo-review-loop": {
       "last_run": null,
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-maintenance."
+      "notes": "Retired 2026-09-23; replaced by kinz-upkeep."
     },
     "repo-open-loop": {
       "last_run": "2026-08-22T00:00:00+00:00",
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-creative."
+      "notes": "Retired 2026-09-23; replaced by kinz-lab."
     },
-    "repo-genesis-loop": {
-      "last_run": "2026-09-02T19:01:07+00:00",
-      "status": "idle",
+    "kinz-genesis": {
+      "last_run": null,
+      "status": "paused",
       "consecutive_failures": 0,
-      "notes": "Unpaused by owner 2026-09-23 (explicit 'unpause' instruction). Previously paused pending the 2d crash test; owner confirmed lifting it. Next real gate is still the 28-day anchor (day 35 of 28 as of 2026-09-23, next eligible 2026-10-14) and the min_days_between_runs lease (last_run 2026-09-02, min 27d, next eligible 2026-09-29)."
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet. Disabled until a kinzorg-afk systemd timer exists on the laptop."
     },
     "loop-engine-digest": {
       "last_run": null,
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-weekly-summary."
+      "notes": "Retired 2026-09-23; replaced by kinz-digest."
     },
     "repo-backlog-refresh": {
       "last_run": "2026-08-29T08:16:22+00:00",
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-improvements."
+      "notes": "Retired 2026-09-23; replaced by kinz-polish."
     },
     "kinz-competitor-analyst": {
       "last_run": null,
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-kinz-analyst."
+      "notes": "Retired 2026-09-23; replaced by kinz-market-watch."
     },
-    "cloud-kinz-improvement": {
-      "last_run": "2026-10-11T01:35:00Z",
+    "kinz-ledger": {
+      "last_run": null,
       "status": "idle",
-      "consecutive_failures": 0
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
     },
-    "cloud-daily-commit": {
-      "last_run": "2026-10-11T05:47:45Z",
+    "kinz-heartbeat": {
+      "last_run": null,
       "status": "idle",
-      "consecutive_failures": 0
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
     },
     "cloud-weekly-status": {
       "last_run": null,
       "status": "retired",
       "consecutive_failures": 0,
-      "notes": "Retired 2026-09-23; replaced by cloud-weekly-summary."
+      "notes": "Retired 2026-09-23; replaced by kinz-digest."
     },
-    "cloud-maintenance": {
-      "last_run": "2026-10-11T01:20:30Z",
-      "status": "idle",
-      "consecutive_failures": 0
-    },
-    "cloud-improvements": {
-      "last_run": "2026-10-09T01:35:00Z",
-      "status": "idle",
-      "consecutive_failures": 0
-    },
-    "cloud-creative": {
-      "last_run": "2026-10-10T01:24:00Z",
-      "status": "idle",
-      "consecutive_failures": 0
-    },
-    "cloud-weekly-summary": {
+    "kinz-upkeep": {
       "last_run": null,
       "status": "idle",
-      "consecutive_failures": 0
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
     },
-    "cloud-kinz-analyst": {
-      "last_run": "2026-09-23T21:35:25Z",
+    "kinz-polish": {
+      "last_run": null,
       "status": "idle",
-      "consecutive_failures": 0
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-lab": {
+      "last_run": null,
+      "status": "idle",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-digest": {
+      "last_run": null,
+      "status": "idle",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-market-watch": {
+      "last_run": null,
+      "status": "idle",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-portfolio": {
+      "last_run": null,
+      "status": "idle",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-vault": {
+      "last_run": null,
+      "status": "idle",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
+    },
+    "kinz-zai": {
+      "last_run": null,
+      "status": "paused",
+      "consecutive_failures": 0,
+      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet."
     }
   }
 }

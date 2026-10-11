@@ -1,6 +1,6 @@
 # Job: improvements (Mon, Wed, Fri)
 
-Loop name: `cloud-improvements`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-polish`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** ship real improvements to repos Nassim uses or shows people: bug fixes, missing
 tests, correctness and clarity. One well-tested fix beats five cosmetic edits. This job

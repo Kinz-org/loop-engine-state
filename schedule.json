@@ -1,11 +1,11 @@
 {
   "version": 2,
   "timezone_default": "Africa/Tunis",
-  "calendar_start": "2026-09-24",
+  "calendar_start": "2026-10-12",
   "loops": [
     {
-      "name": "cloud-dispatch",
-      "title": "Loop engine dispatcher",
+      "name": "kinz-dispatch",
+      "title": "KINZ · Night dispatcher",
       "agent": "claude-cloud",
       "schedule": "45 1,6 * * *",
       "schedule_kind": "cron",
@@ -14,14 +14,14 @@
       "paused_until": null,
       "writes_prs": false,
       "merges": false,
-      "purpose": "The one claude.ai routine for all cloud jobs. Fires at 01:45 and 06:45, while Nassim sleeps, so loop work never uses up his daytime usage limit. Runs whichever jobs are due (scripts/due_jobs.py).",
+      "purpose": "The one claude.ai routine for all cloud jobs. Fires at 01:45 and 06:45, while Nassim sleeps, so loop work never uses up the KINZ account's daytime usage limit. Runs whichever jobs are due (scripts/due_jobs.py).",
       "prompt": "prompts/dispatch.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
       "in_calendar": false
     },
     {
-      "name": "cloud-maintenance",
-      "title": "Loop: maintenance",
+      "name": "kinz-upkeep",
+      "title": "KINZ · Upkeep — CI, dependencies, merges",
       "agent": "claude-cloud",
       "schedule": "45 1 * * *",
       "schedule_kind": "cron",
@@ -32,12 +32,13 @@
       "merges": true,
       "purpose": "Merge green dependency updates and green agent PRs, fix red CI, resolve conflicts, across all repos.",
       "prompt": "prompts/maintenance.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
-      "dispatched": true
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Daily sweep of every Kinz-org repo in the registry (not the vault, not loop-engine-state).\n• Merges green Dependabot updates; asks Dependabot to rebase conflicted ones, closes them after two tries.\n• Takes over agent PRs (claude/loop-…): merges them when CI is green, resolves conflicts, fixes red CI (two attempts, then closes PRs older than 7 days).\n• Fixes a red default branch when the cause is clear; adds a pull-request CI workflow to a repo that has none.\n• Accounting repo: never merges a change to how a reported figure is derived — labels it 'hold' for you.\nMerge rules: CI ran and passed, no workflow file edited, no test weakened.\nOutput: merged PRs, a run record in runs/, one status line on your phone."
     },
     {
-      "name": "cloud-kinz-analyst",
-      "title": "Loop: KINZ competitor analyst",
+      "name": "kinz-market-watch",
+      "title": "KINZ · Market watch — competitor data check",
       "agent": "claude-cloud",
       "schedule": "45 1 * * 2",
       "schedule_kind": "cron",
@@ -48,12 +49,13 @@
       "merges": false,
       "purpose": "Read-only check of the weekly KINZ scrape data; runs the night after Monday's scrape. Writes findings only.",
       "prompt": "prompts/kinz-analyst.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
-      "dispatched": true
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Read-only check of the weekly competitor scrape, the night after Monday's GitHub Actions run.\n• Downloads competitors.db from the 'weekly-scrape-data' release of kinz-competitor-intelligence.\n• Counts competitors, products and price history; finds competitors the scrape missed, suspicious prices (zeros, identical clusters), the 100-product pagination bug, and price moves over 30%.\n• Never prints contact names, phones or emails; deletes the database at the end.\nChanges nothing in the repo. Output: a new dated section in findings/kci-data-quality.md."
     },
     {
-      "name": "cloud-improvements",
-      "title": "Loop: improvements",
+      "name": "kinz-polish",
+      "title": "KINZ · Polish — improvements on two repos",
       "agent": "claude-cloud",
       "schedule": "45 1 * * 1,3,5",
       "schedule_kind": "cron",
@@ -64,12 +66,13 @@
       "merges": true,
       "purpose": "Top improvement-list item on 2 repos by rotation; refill a repo's list when it runs low. Merges when green.",
       "prompt": "prompts/improvements.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
-      "dispatched": true
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Monday, Wednesday and Friday: real improvements on the next two repos of the rotation.\n• Reads each repo's docs/IMPROVEMENTS.md and refills it to 3–5 items found in the code when it runs low.\n• Fixes the top open item on its own branch, with a regression test for every bug, and ticks it off in the same PR.\n• Merges when CI is green; money, tax and reported-figure logic goes to an Opus subagent with tests that pin the numbers.\nOutput: up to two merged PRs, rotation cursor moved, notes for future runs in registry.json."
     },
     {
-      "name": "cloud-kinz-improvement",
-      "title": "Loop: Kinz accounting improvement",
+      "name": "kinz-ledger",
+      "title": "KINZ · Ledger — accounting repo fixes",
       "agent": "claude-cloud",
       "schedule": "45 1 * * 0,2,4",
       "schedule_kind": "cron",
@@ -79,13 +82,14 @@
       "writes_prs": true,
       "merges": true,
       "purpose": "Kinz accounting repo improvement pass: 1-3 well-tested fixes, merged when green. Figure-changing PRs wait for Nassim.",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
       "dispatched": true,
-      "prompt": "prompts/kinz-accounting.md"
+      "prompt": "prompts/kinz-accounting.md",
+      "details": "Sunday, Tuesday and Thursday: 1 to 3 tested fixes in kinz-accounting-analysis.\n• Runs pytest, ruff and the read-only verifier; rebuilds reports offline from the committed extract (never calls Odoo).\n• Looks for wrong maths, dead code paths, reports that contradict their data, stale docs, missing tests.\n• Tax and money reasoning goes to an Opus subagent. A change to a reported figure is left open with the 'hold' label and a NEEDS YOU alert.\nOutput: merged test/doc/fix PRs, held figure changes for you."
     },
     {
-      "name": "cloud-creative",
-      "title": "Loop: creative idea",
+      "name": "kinz-lab",
+      "title": "KINZ · Lab — weekly creative experiment",
       "agent": "claude-cloud",
       "schedule": "45 1 * * 6",
       "schedule_kind": "cron",
@@ -96,12 +100,13 @@
       "merges": true,
       "purpose": "One new idea in one repo; a fresh Opus agent checks it against a goal written first. Merges if verified and green.",
       "prompt": "prompts/creative.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
-      "dispatched": true
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Saturday: one new idea in one rotation repo, judged by an independent agent.\n• Picks a repo (not last week's), chooses an idea that fits one PR, and writes 3–6 success checks in experiments/ before writing code.\n• Builds it with tests, then a fresh Opus judge runs every check and answers VERIFIED or NOT VERIFIED.\n• Merged only if VERIFIED and CI is green; one retry with a new judge, otherwise closed with the verdict.\nOutput: the experiment file with its verdict, and the PR."
     },
     {
-      "name": "cloud-daily-commit",
-      "title": "Loop: daily commit",
+      "name": "kinz-heartbeat",
+      "title": "KINZ · Heartbeat — one small fix if the day is empty",
       "agent": "claude-cloud",
       "schedule": "45 6 * * *",
       "schedule_kind": "cron",
@@ -112,12 +117,13 @@
       "merges": true,
       "purpose": "Only if nothing landed today: one small, real fix, merged when green. Runs after the night jobs.",
       "prompt": "prompts/daily-commit.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
-      "dispatched": true
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Every morning at 06:45, after the night jobs.\n• If anything already landed today on a Kinz-org repo, it stops (status: skipped).\n• Otherwise makes one small, real fix in the least recently updated rotation repo: an open improvement item, a wrong doc line, a missing test.\n• No whitespace churn, no renames for their own sake. Merged when CI is green.\nOutput: at most one merged PR, so the contribution graph shows real work every day."
     },
     {
-      "name": "cloud-weekly-summary",
-      "title": "Loop: weekly summary",
+      "name": "kinz-digest",
+      "title": "KINZ · Monday digest — the week in one page",
       "agent": "claude-cloud",
       "schedule": "45 6 * * 1",
       "schedule_kind": "cron",
@@ -128,17 +134,52 @@
       "merges": false,
       "purpose": "Weekly report on Monday morning: what merged, what failed, what never ran, what's next.",
       "prompt": "prompts/weekly-summary.md",
-      "trigger_id": "trig_012CaVXFbdpvDTL4LvwjRMMx",
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true,
+      "details": "Monday 06:45: the weekly report you read on your phone.\n• Shipped: merged PRs per repo, with links.\n• Broken or stuck: red CI, PRs left open, failures.\n• Jobs that did not run: compares each job's schedule with its run records; 'missing' means it never fired.\n• The Lab verdict, next week's rotation, and repos not attached to the routine (NEEDS YOU).\nChanges no work repo. Output: reports/weekly-<year>-W<week>.md."
+    },
+    {
+      "name": "kinz-portfolio",
+      "title": "KINZ · Portfolio review — three public repos",
+      "agent": "claude-cloud",
+      "schedule": "45 1 * * 0",
+      "schedule_kind": "cron",
+      "timezone": "Africa/Tunis",
+      "enabled": true,
+      "paused_until": null,
+      "writes_prs": true,
+      "merges": true,
+      "purpose": "Weekly portfolio review of three public Kinz-org repos, with small checkable fixes merged and the rest reported.",
+      "details": "Sunday 01:45: the github-portfolio-builder method, applied to the three public repos reviewed longest ago.\n• Reads each README and checks its claims against the code: links, badges, quick-start commands, license.\n• Labels every finding verified, reported or unresolved; at most five per repo.\n• Fixes and merges only small checkable things (wrong links, wrong badges, commands that don't match the code, README lines the code contradicts).\n• Licenses, visibility, descriptions, claims about results and workflows are left to you, listed under 'Needs the owner'.\nOutput: reports/portfolio-<year>-W<week>.md and the merged PRs.",
+      "prompt": "prompts/portfolio.md",
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
       "dispatched": true
     },
     {
-      "name": "repo-genesis-loop",
-      "title": "Laptop: new repo (genesis)",
+      "name": "kinz-vault",
+      "title": "KINZ · Vault gardener — Obsidian weekly pass",
+      "agent": "claude-cloud",
+      "schedule": "45 6 * * 0",
+      "schedule_kind": "cron",
+      "timezone": "Africa/Tunis",
+      "enabled": true,
+      "paused_until": null,
+      "writes_prs": true,
+      "merges": false,
+      "purpose": "Weekly upkeep of the Obsidian vault (Kinz-org/kinz-obsidian-vault) and a journal of what the loops did. Opens a PR; never merges.",
+      "details": "Sunday 06:45, after the portfolio review: a gardening pass on the Obsidian vault, in French, in the vault's own style.\n• Adds a missing 'type' to notes, links orphan notes from their hub, refreshes the Atlas 'Pistes à écrire' table, rebuilds the 3D planets view.\n• Writes 'Journal des boucles — <year>-W<week>': every job of the week, its runs, merged PRs and open NEEDS YOU items.\n• Never moves, renames or deletes a note; never touches .obsidian/ or Templates/; grey links stay — they are leads.\n• Opens one PR and does NOT merge it: you review it in Obsidian, then merge.\nOutput: a vault PR and a NEEDS YOU alert with its link.",
+      "prompt": "prompts/vault-gardener.md",
+      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "dispatched": true
+    },
+    {
+      "name": "kinz-genesis",
+      "title": "KINZ · Genesis — new private repo (laptop)",
       "agent": "claude-laptop",
       "schedule": "0 14 * * 3",
       "schedule_kind": "cron",
       "timezone": "Africa/Tunis",
-      "enabled": true,
+      "enabled": false,
       "paused_until": null,
       "writes_prs": false,
       "merges": false,
@@ -147,11 +188,12 @@
         "dtstart": "2026-10-14T14:00",
         "rrule": "FREQ=DAILY;INTERVAL=28",
         "note": "Timer fires weekly; the prompt's 28-day gate decides. The calendar shows only the days it acts."
-      }
+      },
+      "details": "Every 28 days: one new private repo that fits the portfolio, created from the laptop because cloud sessions cannot create repos.\nDisabled for Kinz-org until a second systemd timer, signed in to gh as kinzorg-afk, is set up on the laptop."
     },
     {
-      "name": "zai-keep-going",
-      "title": "Z.ai: keep going",
+      "name": "kinz-zai",
+      "title": "KINZ · Z.ai session (paused)",
       "agent": "zai",
       "schedule": "manual",
       "schedule_kind": "natural",

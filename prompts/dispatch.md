@@ -8,7 +8,7 @@ means doing that once.
 
 1. Read `prompts/_common.md` and do its setup (§1).
 2. **Which jobs.** If the message that started you names jobs (for example
-   `run: cloud-maintenance`), run exactly those, in that order. That is how Nassim or a test
+   `run: kinz-upkeep`), run exactly those, in that order. That is how Nassim or a test
    runs a job by hand. Otherwise run `python3 scripts/due_jobs.py` from the state repo. It
    prints the due jobs, one per line, in the order to run them. If it prints nothing, reply
    `OK: nothing due` and stop. Write no run record for an empty fire.

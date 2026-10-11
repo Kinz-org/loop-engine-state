@@ -128,7 +128,7 @@ def cross_checks(cfg: dict, rep: Report, root: Path) -> None:
             rep.warn(f"schedule.json: '{l['name']}' has no trigger_id yet (routine not created)")
 
     # genesis lease (the double-run guard)
-    g = state.get("loops", {}).get("repo-genesis-loop")
+    g = state.get("loops", {}).get("kinz-genesis")
     if g and g.get("status") == "running":
         stale_h = settings.get("genesis", {}).get("stale_lease_hours", 6)
         try:

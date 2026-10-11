@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "updated_at": "2026-10-11T01:45:00+00:00",
+  "updated_at": "2026-10-11T21:00:00+00:00",
   "repos": [
     {
       "name": "analytics-service-toolkit",
@@ -131,6 +131,16 @@
       "primary_language": "Python",
       "is_archived": false,
       "worked_by": "none"
+    },
+    {
+      "name": "kinz-obsidian-vault",
+      "owner": "Kinz-org",
+      "visibility": "private",
+      "in_rotation": false,
+      "role": "cloud-owned",
+      "created_by": "manual",
+      "worked_by": "none",
+      "notes": "Nassim's Obsidian vault (French, wikilinks, MOC hubs; grey links are deliberate leads). Only the kinz-vault job works here, and its PRs are never merged by a loop: they wait for Nassim. Never move, rename or delete a note."
     }
   ],
   "rotation": {

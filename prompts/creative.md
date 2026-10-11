@@ -1,6 +1,6 @@
 # Job: creative idea (Saturday)
 
-Loop name: `cloud-creative`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-lab`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** once a week, add one new, useful idea to one repo. The work is judged by a separate,
 stronger agent against a goal you write before you start, because an agent that grades its own
@@ -9,7 +9,7 @@ work passes every time. This job replaces the old open loop.
 ## Steps
 
 1. **Pick a repo.** Choose at random from the rotation repos whose `worked_by` is `claude`.
-   Avoid last week's pick, which you can find in the latest `runs/*-cloud-creative.json`.
+   Avoid last week's pick, which you can find in the latest `runs/*-kinz-lab.json` (records from before 2026-10-11 are named `*-cloud-creative.json`).
 2. **Pick an idea.** Read the repo properly. Think of 3 ideas that would make it clearly more
    useful or more impressive to someone looking at it: a feature, a command-line tool, a chart
    or report, a link to one of Nassim's other repos, a benchmark, a runnable demo. Choose one
