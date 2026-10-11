@@ -4,7 +4,7 @@
   "repos": [
     {
       "name": "analytics-service-toolkit",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -17,7 +17,7 @@
     },
     {
       "name": "btc-llm-sentiment",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -30,7 +30,7 @@
     },
     {
       "name": "kinz-accounting-analysis-20260623-102129",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "private",
       "in_rotation": false,
       "role": "cloud-owned",
@@ -43,7 +43,7 @@
     },
     {
       "name": "feed-quality-gate",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -56,7 +56,7 @@
     },
     {
       "name": "kinz-competitor-intelligence",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "private",
       "in_rotation": true,
       "role": "rotation",
@@ -69,7 +69,7 @@
     },
     {
       "name": "kinz-margin-guardian-pipeline",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -82,7 +82,7 @@
     },
     {
       "name": "kinz-price-bridge",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": false,
       "role": "bridge",
@@ -95,7 +95,7 @@
     },
     {
       "name": "kinz-secure-commerce-hub",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -108,7 +108,7 @@
     },
     {
       "name": "Next.js-SaaS",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "public",
       "in_rotation": true,
       "role": "rotation",
@@ -121,7 +121,7 @@
     },
     {
       "name": "loop-engine-state",
-      "owner": "nassim0014",
+      "owner": "Kinz-org",
       "visibility": "private",
       "in_rotation": false,
       "role": "read-only",

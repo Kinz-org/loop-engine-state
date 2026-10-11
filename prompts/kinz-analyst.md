@@ -22,7 +22,7 @@ the end of the run.
 
 1. The repo is at `/home/user/kinz-competitor-intelligence`. Use it read-only.
 2. Read the release with
-   `curl -sS https://api.github.com/repos/nassim0014/kinz-competitor-intelligence/releases/tags/weekly-scrape-data`.
+   `curl -sS https://api.github.com/repos/Kinz-org/kinz-competitor-intelligence/releases/tags/weekly-scrape-data`.
    Its body says when it was last updated. Find the asset named `competitors.db` and download
    it by its API `url` with the header `Accept: application/octet-stream` to
    `/tmp/kci/competitors.db`. The browser download link returns 404 for this private repo.

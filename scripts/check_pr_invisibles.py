@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Reject invisible/deceptive characters in a PR's body, title, and commits.
 
-  python scripts/check_pr_invisibles.py --repo nassim0014/btc-llm-sentiment --pr 45
+  python scripts/check_pr_invisibles.py --repo Kinz-org/btc-llm-sentiment --pr 45
   python scripts/check_pr_invisibles.py --stdin < message.txt
   echo "text" | python scripts/check_pr_invisibles.py --stdin
 

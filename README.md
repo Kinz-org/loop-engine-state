@@ -1,7 +1,16 @@
 # loop-engine-state
 
-Control repo for Nassim's scheduled agent loops: what runs, when, with which instructions,
-and a record of every run. Private. Nothing here is a work target for the loops.
+Control repo for the KINZ organization's scheduled agent loops: what runs, when, with which
+instructions, and a record of every run. Public, so the method is visible: the prompts, the
+safety rules, the run records and the judge's verdicts are the evidence of how the loops work.
+Nothing here is a work target for the loops.
+
+This is the `Kinz-org` copy. It started from the same state as `nassim0014/loop-engine-state`
+on 2026-10-11 and is developed separately from it on purpose: two versions can be compared to
+see which steps build the better one, and if one breaks the other can take over. Config
+(`registry.json`, `prompts/`, `scripts/`) points at `Kinz-org` repos. Records dated before
+2026-10-11 (`runs/`, `experiments/`, `reports/`, `findings/`) describe the shared history and
+keep their original `nassim0014` links.
 
 ## What the loops are for
 
@@ -31,6 +40,10 @@ alert when a run fails or needs him, and a weekly summary on Monday morning.
 due (`prompts/dispatch.md`). It runs at night because the loops share Nassim's usage limit. The
 repos are attached to that routine, so a new repo has to be attached there before any job can
 see it.
+
+For this `Kinz-org` copy, the table above is the design, not yet a running schedule: the
+routine for the KINZ account has not been created. Until it is, no job runs against the
+`Kinz-org` repos.
 
 Genesis stays on the laptop because cloud sessions cannot create repositories. Its prompt
 is `~/.claude/scheduled-tasks/repo-genesis-loop/SKILL.md` on the laptop, run by the

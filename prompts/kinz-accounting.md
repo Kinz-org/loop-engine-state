@@ -4,7 +4,7 @@ Loop name: `cloud-kinz-improvement`. Read `prompts/_common.md` first; everything
 
 This is the old "Kinz repo — improvement pass" routine (`trig_01FTYzTF5d7GsEuQZ3sxuebP`, deleted
 2026-09-23), brought into the loop engine. The repo is
-`nassim0014/kinz-accounting-analysis-20260623-102129`, at
+`Kinz-org/kinz-accounting-analysis-20260623-102129`, at
 `/home/user/kinz-accounting-analysis-20260623-102129`. It is a private repo of Odoo-derived
 financial reporting for a Tunisian cosmetics business.
 

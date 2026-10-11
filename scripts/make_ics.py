@@ -147,7 +147,7 @@ def events(sched: dict) -> list[list[str]]:
             desc.append(cal["note"])
         evs.append([
             "BEGIN:VEVENT",
-            f"UID:{l['name']}@loop-engine-state.nassim0014",
+            f"UID:{l['name']}@loop-engine-state.kinz-org",
             f"DTSTAMP:{stamp}",
             f"DTSTART;TZID=Africa/Tunis:{dtstart}",
             "DURATION:PT30M",
@@ -162,7 +162,7 @@ def events(sched: dict) -> list[list[str]]:
 
 def build(sched: dict) -> str:
     lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
-             "PRODID:-//nassim0014//loop-engine-state//EN",
+             "PRODID:-//Kinz-org//loop-engine-state//EN",
              "CALSCALE:GREGORIAN", "X-WR-CALNAME:Loop engine",
              "X-WR-TIMEZONE:Africa/Tunis", *VTIMEZONE]
     for ev in events(sched):

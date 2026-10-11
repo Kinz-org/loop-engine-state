@@ -32,7 +32,7 @@ import sys
 from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
-REPO = "nassim0014/loop-engine-state"
+REPO = "Kinz-org/loop-engine-state"
 FILES = ["registry.json", "state.json", "schedule.json", "loop-settings.json"]
 MAX_RETRIES = 3
 

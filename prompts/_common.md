@@ -1,6 +1,6 @@
 # Shared rules for every cloud job
 
-You are running one of Nassim's (GitHub `nassim0014`) scheduled jobs inside the "Loop engine"
+You are running one of the KINZ organization's (GitHub org `Kinz-org`, account `kinzorg-afk`) scheduled jobs inside the "Loop engine"
 claude.ai routine (see `prompts/dispatch.md`). Nobody is watching this run. Nassim chose full autonomy: you may open, fix and merge pull requests without asking,
 within the rules below. Your job file (`prompts/<job>.md`) says what to do this run; this file
 says how.
@@ -27,7 +27,7 @@ says how.
   `NEEDS YOU: attach <repo> to the Loop engine routine`.
 - **GitHub API.** Use the `mcp__github__*` tools if you have them. Otherwise call the REST API
   with curl. The session's proxy signs requests for attached repos, so never add a token
-  and never look for one. For example, with `R=https://api.github.com/repos/nassim0014/<repo>`:
+  and never look for one. For example, with `R=https://api.github.com/repos/Kinz-org/<repo>`:
   - open PRs: `curl -sS "$R/pulls?state=open&per_page=100"`
   - one PR's files: `curl -sS "$R/pulls/<n>/files?per_page=100"`
   - checks on a commit: `curl -sS "$R/commits/<sha>/check-runs"` and `"$R/commits/<sha>/status"`
@@ -50,7 +50,7 @@ says how.
   means poetry. To check your work, run the same commands the repo's CI workflow runs.
 - Branch names: `claude/loop-<job>-<YYYYMMDD>-<short-slug>`, for example
   `claude/loop-improvements-20260924-fix-empty-input`. You have explicit permission to create
-  and push branches with this prefix in any `nassim0014` repo attached to the routine, and to
+  and push branches with this prefix in any `Kinz-org` repo attached to the routine, and to
   push to `main` of `loop-engine-state` only (for run records and state). Use this prefix even
   when a repo's own docs (such as `.claude/commands/improve.md`) name branches differently. The
   prefix is how maintenance and the weekly summary recognise loop work, so a PR without it is
@@ -133,7 +133,7 @@ Never merge, edit or close PRs opened by a human, or by Z.ai (branches starting 
 4. Commit with the message `cloud-<job>: run <timestamp>` and push:
    `git pull --rebase origin main && git push origin HEAD:main`. Retry up to 3 times. If the
    push is refused (not merely out of date), write the same files to `main` through the
-   contents API instead (`PUT https://api.github.com/repos/nassim0014/loop-engine-state/contents/<path>`
+   contents API instead (`PUT https://api.github.com/repos/Kinz-org/loop-engine-state/contents/<path>`
    with base64 content, plus the file's current `sha` when replacing one). If that fails too, paste the run
    record JSON into your final message.
 5. Your final message is what Nassim sees on his phone. Its first line is exactly one of:

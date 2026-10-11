@@ -11,7 +11,7 @@ something has already landed and there is nothing to do.
 1. Today means today's date in Africa/Tunis.
 2. **Did anything land today?** For each registry repo except `loop-engine-state`, list the
    default branch's commits since today 00:00 Tunis time (23:00 UTC the day before). If any
-   commit's author login is `nassim0014`, stop. Record `status: skipped` with the commit you
+   commit's author login is `kinzorg-afk`, stop. Record `status: skipped` with the commit you
    found, and finish.
 3. **Otherwise make one small, real fix.** Take the rotation repo (`worked_by` `claude`) whose
    default branch was updated longest ago. Prefer the smallest open item in its

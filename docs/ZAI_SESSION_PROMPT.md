@@ -1,6 +1,6 @@
 # Z.ai Session Prompt - "Keep Going" (canonical)
 
-Source of truth is the private repo nassim0014/loop-engine-state.
+Source of truth is the public repo Kinz-org/loop-engine-state.
 Never trust local sandbox state. Always pull before acting, push after.
 
 **Status: paused** until Z.ai has its own GitHub account (owner decision, 2026-09-23).
@@ -9,7 +9,7 @@ work from his or Claude's. Once the account exists and is a collaborator on the 
 assigned to you, set `enabled: true` on `zai-keep-going` in `schedule.json`.
 
 ## Phase 0 - Preflight (always)
-1. `gh auth status` must show **your own account**, not `nassim0014`. Abort otherwise.
+1. `gh auth status` must show **your own account**, not `kinzorg-afk`. Abort otherwise.
 2. Pull registry.json, state.json, schedule.json and loop-settings.json from the state repo.
 3. `python scripts/validate_config.py --online`. Abort the session on failure.
 4. Your repos are the registry entries with `"worked_by": "zai"`. If there are none, write a
