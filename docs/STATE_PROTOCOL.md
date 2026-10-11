@@ -76,7 +76,7 @@ Each loop session ends by writing `runs/<UTC-timestamp>-<loop>.json`, valid agai
 
 ```json
 {
-  "loop": "cloud-improvements",
+  "loop": "kinz-polish",
   "run_url": "https://claude.ai/code/session_01AbC...",
   "started": "2026-09-24T09:15:02Z",
   "ended":   "2026-09-24T09:41:40Z",
@@ -125,13 +125,13 @@ The full wording the jobs follow is in `prompts/_common.md` §3.
 
 | Field | Owner | Others |
 |---|---|---|
-| `rotation_cursor` | `cloud-improvements` | read only |
+| `rotation_cursor` | `kinz-polish` | read only |
 | `loops.<name>.*` | the named loop | read only |
 | `registry.json` repo `notes` | the job working that repo | read only |
 | `registry.json` `worked_by`, `in_rotation` | owner (human) | read only |
 | `loop-settings.json`, `schedule.json`, `prompts/` | owner (human) | read only |
-| `experiments/*.md` | `cloud-creative` | append only |
-| `reports/*.md` | `cloud-weekly-summary` | read only |
+| `experiments/*.md` | `kinz-lab` | append only |
+| `reports/*.md` | `kinz-digest` | read only |
 | `runs/*.json` | the loop that wrote it | append only, never edit |
 
 Each repo has one `worked_by` agent. Only that agent starts new work there, so Claude and

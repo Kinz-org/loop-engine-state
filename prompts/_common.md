@@ -84,6 +84,9 @@ can edit the check can pass anything.
 
 Never merge, edit or close PRs opened by a human, or by Z.ai (branches starting `loop/zai/`).
 
+Never merge a PR in `kinz-obsidian-vault` (branches `claude/loop-vault-`). Those wait for
+Nassim, whatever their CI says; only the `kinz-vault` job pushes to them.
+
 ## 4. Never
 
 - Never change a repo's visibility or make anything public. New repos are private.
@@ -108,11 +111,12 @@ Never merge, edit or close PRs opened by a human, or by Z.ai (branches starting 
 
 ## 6. Finish: run record, state, report
 
-1. Write `runs/<YYYYMMDDTHHMMSSZ>-cloud-<job>.json` (UTC start time) in the state repo:
+1. Write `runs/<YYYYMMDDTHHMMSSZ>-<loop>.json` (UTC start time) in the state repo. `<loop>` is
+   the loop name at the top of your job file, for example `kinz-polish`:
 
    ```json
    {
-     "loop": "cloud-<job>",
+     "loop": "<loop>",
      "run_url": "https://claude.ai/code/session_...",
      "started": "2026-09-24T09:15:02Z",
      "ended": "2026-09-24T09:41:40Z",
@@ -125,12 +129,12 @@ Never merge, edit or close PRs opened by a human, or by Z.ai (branches starting 
    }
    ```
 
-2. In `state.json`, update only your own `loops.cloud-<job>` entry (create it if missing): `last_run` (end time),
+2. In `state.json`, update only your own `loops.<loop>` entry (create it if missing): `last_run` (end time),
    `status` (`idle`, or `failed` if the run failed), and `consecutive_failures` (0 on success,
    +1 on failure).
 3. Check: `pip install -q jsonschema && python3 scripts/validate_config.py --runs`. Fix
    anything it reports about your own files.
-4. Commit with the message `cloud-<job>: run <timestamp>` and push:
+4. Commit with the message `<loop>: run <timestamp>` and push:
    `git pull --rebase origin main && git push origin HEAD:main`. Retry up to 3 times. If the
    push is refused (not merely out of date), write the same files to `main` through the
    contents API instead (`PUT https://api.github.com/repos/Kinz-org/loop-engine-state/contents/<path>`

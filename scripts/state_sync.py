@@ -3,8 +3,8 @@
 
   python scripts/state_sync.py pull                     # fetch config into --work
   python scripts/state_sync.py push -m "closed-loop: advance cursor"
-  python scripts/state_sync.py lease --loop repo-genesis-loop --acquire
-  python scripts/state_sync.py lease --loop repo-genesis-loop --release --status done
+  python scripts/state_sync.py lease --loop kinz-genesis --acquire
+  python scripts/state_sync.py lease --loop kinz-genesis --release --status done
 
 Writes are SHA-conditional (read -> mutate -> update with base SHA). On 409 the
 change is re-applied on top of the newer blob, up to 3 times, then it aborts.

@@ -6,7 +6,7 @@ Never trust local sandbox state. Always pull before acting, push after.
 **Status: paused** until Z.ai has its own GitHub account (owner decision, 2026-09-23).
 A second token on Nassim's account would still act as Nassim, and nobody could tell your
 work from his or Claude's. Once the account exists and is a collaborator on the repos
-assigned to you, set `enabled: true` on `zai-keep-going` in `schedule.json`.
+assigned to you, set `enabled: true` on `kinz-zai` in `schedule.json`.
 
 ## Phase 0 - Preflight (always)
 1. `gh auth status` must show **your own account**, not `kinzorg-afk`. Abort otherwise.

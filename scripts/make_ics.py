@@ -139,10 +139,16 @@ def events(sched: dict) -> list[list[str]]:
             rule = rrule(c)
         where = {"claude-cloud": "claude.ai routine", "claude-laptop": "laptop",
                  "zai": "Z.ai"}.get(l["agent"], l["agent"])
-        desc = [l.get("purpose", ""), f"Runs on: {where}.",
-                f"Merges: {'yes' if l.get('merges') else 'no'}."]
+        # `details` is the long, multi-line description written for the calendar; `purpose`
+        # is the one-line fallback. The facts below it come from the schedule itself.
+        desc = [l.get("details") or l.get("purpose", ""), "",
+                f"When: {l['schedule']} (cron, Africa/Tunis).",
+                f"Runs on: {where}.",
+                f"Opens PRs: {'yes' if l.get('writes_prs') else 'no'}. "
+                f"Merges: {'yes' if l.get('merges') else 'no'}.",
+                f"Job id: {l['name']}."]
         if l.get("prompt"):
-            desc.append(f"Prompt: loop-engine-state/{l['prompt']}.")
+            desc.append(f"Instructions: github.com/Kinz-org/loop-engine-state/blob/main/{l['prompt']}")
         if cal and cal.get("note"):
             desc.append(cal["note"])
         evs.append([
@@ -153,7 +159,7 @@ def events(sched: dict) -> list[list[str]]:
             "DURATION:PT30M",
             f"RRULE:{rule}",
             f"SUMMARY:{esc(l.get('title', l['name']))}",
-            f"DESCRIPTION:{esc(' '.join(x for x in desc if x))}",
+            f"DESCRIPTION:{esc(chr(10).join(desc))}",
             "TRANSP:TRANSPARENT",
             "END:VEVENT",
         ])
@@ -163,7 +169,7 @@ def events(sched: dict) -> list[list[str]]:
 def build(sched: dict) -> str:
     lines = ["BEGIN:VCALENDAR", "VERSION:2.0",
              "PRODID:-//Kinz-org//loop-engine-state//EN",
-             "CALSCALE:GREGORIAN", "X-WR-CALNAME:Loop engine",
+             "CALSCALE:GREGORIAN", "X-WR-CALNAME:KINZ loop engine",
              "X-WR-TIMEZONE:Africa/Tunis", *VTIMEZONE]
     for ev in events(sched):
         lines += ev

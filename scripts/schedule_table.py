@@ -20,7 +20,7 @@ SCHEDULE = ROOT / "schedule.json"
 # schedule.json name -> systemd timer unit. Loops with no unit run elsewhere.
 # Since 2026-09-23 only genesis runs from systemd; the other laptop timers are retired.
 UNITS = {
-    "repo-genesis-loop": "loop-genesis.timer",
+    "kinz-genesis": "loop-genesis.timer",
 }
 
 

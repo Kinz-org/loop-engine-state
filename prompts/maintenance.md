@@ -1,13 +1,14 @@
 # Job: maintenance (daily)
 
-Loop name: `cloud-maintenance`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-upkeep`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** every repo ends the run with nothing mergeable left waiting, and no red CI that a
 small fix could turn green. This job replaces the old review loop.
 
 ## Which repos
 
-Every repo in `registry.json` except `loop-engine-state` and archived repos. That includes
+Every repo in `registry.json` except `loop-engine-state`, `kinz-obsidian-vault` (its PRs wait
+for Nassim) and archived repos. That includes
 repos that are out of the improvement rotation: dependency updates and broken CI still matter
 there.
 

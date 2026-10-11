@@ -1,6 +1,6 @@
 # Job: KINZ competitor analyst (Tuesday night)
 
-Loop name: `cloud-kinz-analyst`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-market-watch`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** a weekly, read-only check of the KINZ competitor data, so bad data is caught before
 anyone relies on it. It replaces the laptop task, which kept re-reading a local database

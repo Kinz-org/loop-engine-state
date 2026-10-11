@@ -26,10 +26,14 @@
           "writes_prs": { "type": "boolean" },
           "merges": { "type": "boolean" },
           "purpose": { "type": "string" },
+          "details": {
+            "description": "Long description of what the job does, shown in the calendar event. Lines separated by \\n.",
+            "type": "string"
+          },
           "prompt": { "type": "string", "pattern": "^prompts/[a-z0-9-]+\\.md$" },
           "trigger_id": { "type": ["string", "null"], "pattern": "^trig_[A-Za-z0-9]+$" },
           "dispatched": {
-            "description": "Run by the cloud-dispatch routine when due, not by a routine of its own.",
+            "description": "Run by the kinz-dispatch routine when due, not by a routine of its own.",
             "type": "boolean"
           },
           "in_calendar": { "type": "boolean" },

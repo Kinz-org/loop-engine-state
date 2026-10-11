@@ -41,6 +41,9 @@ jobs:
       - name: Three-way merge regression test
         run: python scripts/test_three_way.py
 
+      - name: Vault checker tests (kinz-vault job)
+        run: python scripts/test_vault_check.py
+
       - name: Assert no literal zero-width characters in source
         # Markers must be BUILT in code, never pasted. A pasted zero-width char
         # is invisible in review and gets silently stripped by editors and

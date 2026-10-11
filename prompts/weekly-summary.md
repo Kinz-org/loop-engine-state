@@ -1,6 +1,6 @@
 # Job: weekly summary (Monday morning)
 
-Loop name: `cloud-weekly-summary`. Read `prompts/_common.md` first; everything there applies.
+Loop name: `kinz-digest`. Read `prompts/_common.md` first; everything there applies.
 
 **Goal:** a short, honest weekly report that Nassim reads on his phone. It tells him what
 shipped, what broke, and whether every job actually ran. This job changes nothing in the
@@ -13,8 +13,8 @@ work repos. It only writes the report to the state repo.
    cron (Africa/Tunis time) should have fired in the window, and compare that with its run
    records. Each expected run is one of: ran (success or partial), skipped on purpose, failed,
    or **missing** (no record at all). Missing is the important one, because it means the job
-   never fired or died before writing anything. For `repo-genesis-loop`, a skipped run on a
-   non-acting day is correct. Skip `cloud-dispatch` itself: it only starts the other jobs and
+   never fired or died before writing anything. For `kinz-genesis`, a skipped run on a
+   non-acting day is correct. Skip `kinz-dispatch` itself: it only starts the other jobs and
    writes no record of its own.
 3. **Per repo** (all registry repos except `loop-engine-state`, read only):
    PRs merged in the window, open PRs by kind (Dependabot, agent, human), and whether the
