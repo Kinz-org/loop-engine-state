@@ -23,9 +23,9 @@
     },
     "kinz-genesis": {
       "last_run": null,
-      "status": "paused",
+      "status": "idle",
       "consecutive_failures": 0,
-      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; has not run here yet. Disabled until a kinzorg-afk systemd timer exists on the laptop."
+      "notes": "Kinz-org engine on the laptop from 2026-10-11: timer kinz-genesis (Wed 07:45, 28-day gate from 2026-10-14), gh as kinzorg-afk, Claude on the KINZ account. Has not created a repo yet."
     },
     "loop-engine-digest": {
       "last_run": null,

@@ -176,20 +176,21 @@
       "name": "kinz-genesis",
       "title": "KINZ · Genesis — new private repo (laptop)",
       "agent": "claude-laptop",
-      "schedule": "0 14 * * 3",
+      "schedule": "45 7 * * 3",
       "schedule_kind": "cron",
       "timezone": "Africa/Tunis",
-      "enabled": false,
+      "enabled": true,
       "paused_until": null,
       "writes_prs": false,
       "merges": false,
-      "purpose": "Every 28 days, create one new private repo coherent with the portfolio. Stays on the laptop: cloud sessions cannot create repos.",
+      "purpose": "Every 28 days, create one new private repo coherent with the portfolio. Runs on the laptop (cloud sessions cannot create repos), on the latest Opus and the KINZ Claude account.",
       "calendar": {
-        "dtstart": "2026-10-14T14:00",
+        "dtstart": "2026-10-14T07:45",
         "rrule": "FREQ=DAILY;INTERVAL=28",
         "note": "Timer fires weekly; the prompt's 28-day gate decides. The calendar shows only the days it acts."
       },
-      "details": "Every 28 days: one new private repo that fits the portfolio, created from the laptop because cloud sessions cannot create repos.\nDisabled for Kinz-org until a second systemd timer, signed in to gh as kinzorg-afk, is set up on the laptop."
+      "details": "Every 28 days, from 2026-10-14: one new private Kinz-org repo that fits the portfolio.\n• Runs on the laptop because cloud sessions cannot create repos: systemd timer kinz-genesis, Wednesdays 07:45, ~/kinz-loop-engine/bin/run-loop.sh.\n• gh as kinzorg-afk and Claude on the KINZ account (contact@kinzoils.com), each from its own login folder; the runner refuses to start on any other account.\n• Checks the 28-day gate before taking its lease, so skipped Wednesdays leave no state behind; a missed or failed run retries the next Wednesday.\n• Builds working code with tests and green CI, a ranked docs/IMPROVEMENTS.md, adds the repo to the registry and rotation, and writes reports/genesis-<date>.md.\nOutput: the new private repo, and a NEEDS YOU to attach it to both claude.ai routines.",
+      "prompt": "prompts/genesis.md"
     },
     {
       "name": "kinz-zai",

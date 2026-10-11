@@ -194,4 +194,28 @@ DESCRIPTION:Sunday 06:45\, after the portfolio review: a gardening pass on
  ub.com/Kinz-org/loop-engine-state/blob/main/prompts/vault-gardener.md
 TRANSP:TRANSPARENT
 END:VEVENT
+BEGIN:VEVENT
+UID:kinz-genesis@loop-engine-state.kinz-org
+DTSTAMP:20261012T000000Z
+DTSTART;TZID=Africa/Tunis:20261014T074500
+DURATION:PT30M
+RRULE:FREQ=DAILY;INTERVAL=28
+SUMMARY:KINZ · Genesis — new private repo (laptop)
+DESCRIPTION:Every 28 days\, from 2026-10-14: one new private Kinz-org repo 
+ that fits the portfolio.\n• Runs on the laptop because cloud sessions ca
+ nnot create repos: systemd timer kinz-genesis\, Wednesdays 07:45\, ~/kinz-
+ loop-engine/bin/run-loop.sh.\n• gh as kinzorg-afk and Claude on the KINZ
+  account (contact@kinzoils.com)\, each from its own login folder\; the run
+ ner refuses to start on any other account.\n• Checks the 28-day gate bef
+ ore taking its lease\, so skipped Wednesdays leave no state behind\; a mis
+ sed or failed run retries the next Wednesday.\n• Builds working code wit
+ h tests and green CI\, a ranked docs/IMPROVEMENTS.md\, adds the repo to th
+ e registry and rotation\, and writes reports/genesis-<date>.md.\nOutput: t
+ he new private repo\, and a NEEDS YOU to attach it to both claude.ai routi
+ nes.\n\nWhen: 45 7 * * 3 (cron\, Africa/Tunis).\nRuns on: laptop.\nOpens P
+ Rs: no. Merges: no.\nJob id: kinz-genesis.\nInstructions: github.com/Kinz-
+ org/loop-engine-state/blob/main/prompts/genesis.md\nTimer fires weekly\; t
+ he prompt's 28-day gate decides. The calendar shows only the days it acts.
+TRANSP:TRANSPARENT
+END:VEVENT
 END:VCALENDAR
