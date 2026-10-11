@@ -23,7 +23,7 @@ which does it with a three-way merge.
 
 ```bash
 # 1. read, keeping the SHA you read at
-OUT=$(gh api repos/nassim0014/loop-engine-state/contents/state.json)
+OUT=$(gh api repos/Kinz-org/loop-engine-state/contents/state.json)
 SHA=$(jq -r .sha <<<"$OUT")
 jq -r .content <<<"$OUT" | base64 -d > state.json
 
@@ -35,7 +35,7 @@ json.dump(s, open('state.json','w'), indent=2)
 PY
 
 # 3. update, passing the SHA you read at
-gh api -X PUT repos/nassim0014/loop-engine-state/contents/state.json \
+gh api -X PUT repos/Kinz-org/loop-engine-state/contents/state.json \
   -f message="state: advance cursor (closed-loop)" \
   -f content="$(base64 -w0 state.json)" \
   -f sha="$SHA"
@@ -65,7 +65,7 @@ hidden zero-width marker in PR bodies is retired. It was a convention the writin
 to remember, and it caused a budget miscount on 2026-08-24.
 
 Once Z.ai has its own GitHub account, its PRs are also told apart by author. Until then its
-commits show as `nassim0014` like everything else, so the branch prefix is the only signal.
+commits show as `kinzorg-afk` like everything else, so the branch prefix is the only signal.
 
 ---
 
@@ -83,7 +83,7 @@ Each loop session ends by writing `runs/<UTC-timestamp>-<loop>.json`, valid agai
   "status":  "success",
   "prs_opened": 2, "prs_merged": 1, "prs_closed": 0, "tests_added": 5,
   "repos_touched": ["btc-llm-sentiment", "Next.js-SaaS"],
-  "pr_urls": ["https://github.com/nassim0014/btc-llm-sentiment/pull/61"],
+  "pr_urls": ["https://github.com/Kinz-org/btc-llm-sentiment/pull/61"],
   "summary": "Fixed the empty-input crash in walk_forward; Next.js-SaaS PR waiting on CI.",
   "errors": []
 }

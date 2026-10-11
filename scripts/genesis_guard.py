@@ -21,7 +21,7 @@ import subprocess
 import sys
 from datetime import datetime, timedelta, timezone
 
-STATE_REPO = "nassim0014/loop-engine-state"
+STATE_REPO = "Kinz-org/loop-engine-state"
 # Never genesis output: engine infrastructure.
 INFRA = {"loop-engine-state"}
 
@@ -43,7 +43,7 @@ def main() -> None:
     manual = {r["name"] for r in reg["repos"] if r.get("created_by") == "manual"}
     excluded = INFRA | manual
 
-    r = subprocess.run(["gh", "repo", "list", "nassim0014", "--limit", "100",
+    r = subprocess.run(["gh", "repo", "list", "Kinz-org", "--limit", "100",
                         "--json", "name,createdAt"], capture_output=True, text=True)
     repos = json.loads(r.stdout or "[]")
 

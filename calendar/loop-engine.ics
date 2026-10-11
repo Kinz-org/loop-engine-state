@@ -1,6 +1,6 @@
 BEGIN:VCALENDAR
 VERSION:2.0
-PRODID:-//nassim0014//loop-engine-state//EN
+PRODID:-//Kinz-org//loop-engine-state//EN
 CALSCALE:GREGORIAN
 X-WR-CALNAME:Loop engine
 X-WR-TIMEZONE:Africa/Tunis
@@ -14,7 +14,7 @@ TZNAME:CET
 END:STANDARD
 END:VTIMEZONE
 BEGIN:VEVENT
-UID:cloud-maintenance@loop-engine-state.nassim0014
+UID:cloud-maintenance@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260924T014500
 DURATION:PT30M
@@ -26,7 +26,7 @@ DESCRIPTION:Merge green dependency updates and green agent PRs\, fix red CI
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-kinz-analyst@loop-engine-state.nassim0014
+UID:cloud-kinz-analyst@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260929T014500
 DURATION:PT30M
@@ -38,7 +38,7 @@ DESCRIPTION:Read-only check of the weekly KINZ scrape data\; runs the night
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-improvements@loop-engine-state.nassim0014
+UID:cloud-improvements@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260925T014500
 DURATION:PT30M
@@ -50,7 +50,7 @@ DESCRIPTION:Top improvement-list item on 2 repos by rotation\; refill a rep
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-kinz-improvement@loop-engine-state.nassim0014
+UID:cloud-kinz-improvement@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260924T014500
 DURATION:PT30M
@@ -63,7 +63,7 @@ DESCRIPTION:Kinz accounting repo improvement pass: 1-3 well-tested fixes\,
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-creative@loop-engine-state.nassim0014
+UID:cloud-creative@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260926T014500
 DURATION:PT30M
@@ -75,7 +75,7 @@ DESCRIPTION:One new idea in one repo\; a fresh Opus agent checks it against
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-daily-commit@loop-engine-state.nassim0014
+UID:cloud-daily-commit@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260924T064500
 DURATION:PT30M
@@ -87,7 +87,7 @@ DESCRIPTION:Only if nothing landed today: one small\, real fix\, merged whe
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:cloud-weekly-summary@loop-engine-state.nassim0014
+UID:cloud-weekly-summary@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20260928T064500
 DURATION:PT30M
@@ -99,7 +99,7 @@ DESCRIPTION:Weekly report on Monday morning: what merged\, what failed\, wh
 TRANSP:TRANSPARENT
 END:VEVENT
 BEGIN:VEVENT
-UID:repo-genesis-loop@loop-engine-state.nassim0014
+UID:repo-genesis-loop@loop-engine-state.kinz-org
 DTSTAMP:20260924T000000Z
 DTSTART;TZID=Africa/Tunis:20261014T140000
 DURATION:PT30M

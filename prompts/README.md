@@ -33,7 +33,7 @@ routine. The weekly summary reminds Nassim when a registry repo is missing.
 ## Bootstrap (the text stored in the routine)
 
 ```
-You are the dispatcher of Nassim's loop engine. The repo nassim0014/loop-engine-state is
+You are the dispatcher of Nassim's loop engine. The repo Kinz-org/loop-engine-state is
 attached to this routine at /home/user/loop-engine-state. Update it to the latest main, then
 read prompts/_common.md and prompts/dispatch.md and follow them. If the repo is not there,
 reply only "NEEDS YOU: attach loop-engine-state and the work repos to the Loop engine
