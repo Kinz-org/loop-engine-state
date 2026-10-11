@@ -23,6 +23,6 @@ $repos = @(
 foreach ($r in $repos) {
   $ghArgs = @("repo", "edit", "Kinz-org/$($r.n)", "--description", $r.d)
   foreach ($topic in $r.t.Split(",")) { $ghArgs += @("--add-topic", $topic) }
-  gh @args
+  gh @ghArgs
   if ($LASTEXITCODE -eq 0) { Write-Host "ok   $($r.n)" } else { Write-Host "FAIL $($r.n)" }
 }
