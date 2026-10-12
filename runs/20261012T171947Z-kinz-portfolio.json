@@ -1,0 +1,26 @@
+{
+  "loop": "kinz-portfolio",
+  "run_url": "https://claude.ai/code/session_0162GBdqkwTFqoKfsGTnbKLf",
+  "started": "2026-10-12T17:19:47Z",
+  "ended": "2026-10-12T17:44:55Z",
+  "status": "partial",
+  "prs_opened": 3,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "analytics-service-toolkit",
+    "btc-llm-sentiment",
+    "feed-quality-gate"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/analytics-service-toolkit/pull/2",
+    "https://github.com/Kinz-org/btc-llm-sentiment/pull/2",
+    "https://github.com/Kinz-org/feed-quality-gate/pull/2"
+  ],
+  "summary": "Manual test fire. Reviewed astk, btc-llm-sentiment and feed-quality-gate (reports/portfolio-2026-W42.md) and opened 3 README-fix PRs. None merged: astk and fqg PRs got no CI run at all, and btc's Security scans check is red, as it is on main.",
+  "errors": [
+    "No CI run created for analytics-service-toolkit#2 or feed-quality-gate#2 (Actions not firing on pull_request)",
+    "btc-llm-sentiment#2: Security scans failed (pre-existing on main)"
+  ]
+}
