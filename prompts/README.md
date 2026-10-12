@@ -34,7 +34,8 @@ routine. The weekly summary reminds Nassim when a registry repo is missing.
 
 ## Bootstrap (the text stored in the routine)
 
-Routine "KINZ loop engine — night dispatcher" (`trig_01RZePiYwx934QeB8rUvXGiP`):
+Routines "KINZ loop engine — night dispatcher" (`trig_01RZePiYwx934QeB8rUvXGiP`, 01:45) and
+"KINZ loop engine — morning dispatcher" (`trig_01MhqFtomzsSprwGD24KWoMi`, 06:45) store the same text:
 
 ```
 You are the dispatcher of the KINZ loop engine (GitHub org Kinz-org). The repo Kinz-org/loop-engine-state is attached to this routine at /home/user/loop-engine-state. Update it to the latest main, then read prompts/_common.md and prompts/dispatch.md and follow them. If the repo is not there, reply only "NEEDS YOU: attach loop-engine-state and the work repos to the KINZ loop engine routine" and stop.

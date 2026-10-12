@@ -43,13 +43,14 @@ The job ids were renamed on 2026-10-11 so this engine can't be mistaken for the 
 the old names. `calendar/loop-engine.ics` holds every enabled job with a detailed description;
 import it into any calendar app, or regenerate it with `python3 scripts/make_ics.py`.
 
-"Loop engine" is one claude.ai routine that fires at 01:45 and 06:45 and runs the jobs that are
+"Loop engine" is one claude.ai routine (two for the Kinz-org copy) that fires at 01:45 and 06:45 and runs the jobs that are
 due (`prompts/dispatch.md`). It runs at night because the loops share the account's usage limit. The
 repos are attached to that routine, so a new repo has to be attached there before any job can
 see it.
 
-For this `Kinz-org` copy the routine is "KINZ loop engine — night dispatcher"
-(`trig_01RZePiYwx934QeB8rUvXGiP`), created 2026-10-11 in the KINZ claude.ai account. It starts a
+For this `Kinz-org` copy there are two routines in the KINZ claude.ai account, with the same
+stored prompt: "KINZ loop engine — night dispatcher" (`trig_01RZePiYwx934QeB8rUvXGiP`, 01:45) and
+"KINZ loop engine — morning dispatcher" (`trig_01MhqFtomzsSprwGD24KWoMi`, 06:45). Each starts a
 fresh session at each fire and sends push notifications. Its repos are attached in the claude.ai
 routines UI: `loop-engine-state`, every repo in `registry.json`, and `kinz-obsidian-vault`.
 

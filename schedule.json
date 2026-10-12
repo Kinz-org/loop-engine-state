@@ -5,18 +5,34 @@
   "loops": [
     {
       "name": "kinz-dispatch",
-      "title": "KINZ · Night dispatcher",
+      "title": "KINZ · Night dispatcher (01:45)",
       "agent": "claude-cloud",
-      "schedule": "45 1,6 * * *",
+      "schedule": "45 1 * * *",
       "schedule_kind": "cron",
       "timezone": "Africa/Tunis",
       "enabled": true,
       "paused_until": null,
       "writes_prs": false,
       "merges": false,
-      "purpose": "The one claude.ai routine for all cloud jobs. Fires at 01:45 and 06:45, while Nassim sleeps, so loop work never uses up the KINZ account's daytime usage limit. Runs whichever jobs are due (scripts/due_jobs.py).",
+      "purpose": "Night routine: runs whichever jobs are due at 01:45 Tunis (scripts/due_jobs.py). Its twin kinz-dispatch-morning runs the 06:45 jobs.",
       "prompt": "prompts/dispatch.md",
       "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "in_calendar": false
+    },
+    {
+      "name": "kinz-dispatch-morning",
+      "title": "KINZ · Morning dispatcher (06:45)",
+      "agent": "claude-cloud",
+      "schedule": "45 6 * * *",
+      "schedule_kind": "cron",
+      "timezone": "Africa/Tunis",
+      "enabled": true,
+      "paused_until": null,
+      "writes_prs": false,
+      "merges": false,
+      "purpose": "Morning routine, same prompt as the night one: runs whichever jobs are due at 06:45 Tunis (heartbeat, Monday digest, Sunday vault gardener).",
+      "prompt": "prompts/dispatch.md",
+      "trigger_id": "trig_01MhqFtomzsSprwGD24KWoMi",
       "in_calendar": false
     },
     {
@@ -117,7 +133,7 @@
       "merges": true,
       "purpose": "Only if nothing landed today: one small, real fix, merged when green. Runs after the night jobs.",
       "prompt": "prompts/daily-commit.md",
-      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "trigger_id": "trig_01MhqFtomzsSprwGD24KWoMi",
       "dispatched": true,
       "details": "Every morning at 06:45, after the night jobs.\n• If anything already landed today on a Kinz-org repo, it stops (status: skipped).\n• Otherwise makes one small, real fix in the least recently updated rotation repo: an open improvement item, a wrong doc line, a missing test.\n• No whitespace churn, no renames for their own sake. Merged when CI is green.\nOutput: at most one merged PR, so the contribution graph shows real work every day."
     },
@@ -134,7 +150,7 @@
       "merges": false,
       "purpose": "Weekly report on Monday morning: what merged, what failed, what never ran, what's next.",
       "prompt": "prompts/weekly-summary.md",
-      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "trigger_id": "trig_01MhqFtomzsSprwGD24KWoMi",
       "dispatched": true,
       "details": "Monday 06:45: the weekly report you read on your phone.\n• Shipped: merged PRs per repo, with links.\n• Broken or stuck: red CI, PRs left open, failures.\n• Jobs that did not run: compares each job's schedule with its run records; 'missing' means it never fired.\n• The Lab verdict, next week's rotation, and repos not attached to the routine (NEEDS YOU).\nChanges no work repo. Output: reports/weekly-<year>-W<week>.md."
     },
@@ -169,7 +185,7 @@
       "purpose": "Weekly upkeep of the Obsidian vault (Kinz-org/kinz-obsidian-vault) and a journal of what the loops did. Opens a PR; never merges.",
       "details": "Sunday 06:45, after the portfolio review: a gardening pass on the Obsidian vault, in French, in the vault's own style.\n• Adds a missing 'type' to notes, links orphan notes from their hub, refreshes the Atlas 'Pistes à écrire' table, rebuilds the 3D planets view.\n• Writes 'Journal des boucles — <year>-W<week>': every job of the week, its runs, merged PRs and open NEEDS YOU items.\n• Never moves, renames or deletes a note; never touches .obsidian/ or Templates/; grey links stay — they are leads.\n• Opens one PR and does NOT merge it: you review it in Obsidian, then merge.\nOutput: a vault PR and a NEEDS YOU alert with its link.",
       "prompt": "prompts/vault-gardener.md",
-      "trigger_id": "trig_01RZePiYwx934QeB8rUvXGiP",
+      "trigger_id": "trig_01MhqFtomzsSprwGD24KWoMi",
       "dispatched": true
     },
     {

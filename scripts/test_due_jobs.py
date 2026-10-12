@@ -65,12 +65,14 @@ check("ran yesterday, due", due(sched, old, t("2026-09-28T16:15")), ["maint", "a
 # by a dispatcher fire, or that job would silently never run.
 real = json.loads((ROOT / "schedule.json").read_text(encoding="utf-8"))
 disp = [l for l in real["loops"] if l.get("prompt") == "prompts/dispatch.md"]
-check("exactly one dispatcher", len(disp), 1)
+# The Kinz-org copy splits the dispatcher into two routines (01:45 and 06:45) with the same
+# prompt, so coverage is checked against the fires of all of them together.
+check("at least one dispatcher", len(disp) >= 1, True)
+check("dispatcher names unique", len({d["name"] for d in disp}), len(disp))
 if disp:
-    fire = disp[0]["schedule"]
     start = t("2026-09-28T00:00")
     fires = [start + timedelta(minutes=i) for i in range(7 * 24 * 60)
-             if cron_matches(fire, start + timedelta(minutes=i))]
+             if any(cron_matches(d["schedule"], start + timedelta(minutes=i)) for d in disp)]
     for job in dispatched(real):
         missed = []
         for i in range(7 * 24 * 60):
