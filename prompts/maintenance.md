@@ -12,6 +12,11 @@ for Nassim) and archived repos. That includes
 repos that are out of the improvement rotation: dependency updates and broken CI still matter
 there.
 
+Repos with `"role": "maintenance-only"` (`kinz-fidelite`, `kinz-stock-sync`) are live business
+apps: there you merge green Dependabot PRs and fix red CI only when the fix stays in tests,
+CI-adjacent config or dependency pins. If the fix would change application logic, report it with
+`NEEDS YOU` instead. Read the repo's registry note first; for `kinz-stock-sync` it is binding.
+
 ## For each repo
 
 1. List its open PRs with their head branch, author, draft flag and merge state.
