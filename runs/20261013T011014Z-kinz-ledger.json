@@ -1,0 +1,22 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01UvMPrwmnbEuARhj9M5DanY",
+  "started": "2026-10-13T01:10:14Z",
+  "ended": "2026-10-13T01:16:23Z",
+  "status": "partial",
+  "prs_opened": 2,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 3,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/1",
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/2"
+  ],
+  "summary": "Fixed the Shopify/Odoo data-quality check counting orders placed after the last Odoo customer invoice as 'missing from Odoo' (88 -> 59 missing + 29 not yet invoiced); PR #1 on hold as a reported-count change. Doc-only CLAUDE.md fix PR #2 passed CI but the merge call was denied by the session's permission classifier, so it is left open.",
+  "errors": [
+    "merge of PR #2 denied by the auto-mode permission classifier; not retried"
+  ]
+}
