@@ -3,6 +3,91 @@
 Updated by the `kinz-competitor-analyst` scheduled task. Same headings every
 run so diffs are meaningful; counts first, then the specific rows that changed.
 
+## Run: 2026-10-13
+
+**No data this run: there is no `weekly-scrape-data` release to read.** The
+repo was recreated under `Kinz-org` on 2026-10-11 (repo `created_at`
+2026-10-11T17:28Z; releases and Actions history did not carry over from the
+old owner). Its only scheduled scrape since then, run 38194388467 on
+2026-10-12 02:04 UTC, failed in batch 1. The release is only published by
+the last step of batch 2, and batch 2 is skipped when batch 1 fails, so the
+release has never been created in this repo. `GET
+/releases/tags/weekly-scrape-data` returns 404 and `/releases` is empty. No
+database was downloaded and none of the data checks could run.
+
+### State
+- Competitors / products / price history / newest `scraped_at`: **not
+  measurable**. No release exists in `Kinz-org/kinz-competitor-intelligence`.
+  The last known figures are still the 09-23 baseline below (77 competitors,
+  1,336 products across 10 competitors, 1,314 price-history rows).
+- Data age: the newest data any job here has seen is from 2026-09-21, now
+  22 days old. Treat it as stale. *(changed: was 2 days old at 09-23)*
+
+### Scrape coverage
+- Not measurable this run (no DB).
+- **Batch-2 persistence bug: still present in the code.** `main` (aa4bd6e)
+  `.github/workflows/scrape.yml` lines ~219-243 still use the inline `python
+  -c` step that calls `scrape_multiple_competitors()` and never writes to the
+  DB. Batch 2 did not run this week (it was skipped after batch 1 failed), so
+  there is no batch-2 log to check. Fix unchanged: add `--offset` to
+  `scripts/manual_scrape.py` and have batch 2 call `python
+  scripts/manual_scrape.py --type web --offset 25`.
+
+### Data quality
+- Not measurable this run (no DB). Open items carried from 09-23: FLORAISON
+  cluster pinned at 400 TND plus one blog post scraped as a product;
+  missing_category 162 out of 1,336.
+- Pagination regression (exactly 100 products): cannot be checked this run.
+
+### Price movements
+- Not measurable this run. Structural limit unchanged from 09-23: each
+  release holds only one week's `price_history` snapshot.
+
+### Workflow health
+- `scrape.yml` runs in the Kinz-org repo: only 1 so far. 2026-10-12 ❌
+  (scheduled, sha cc3b107). Earlier runs belong to the old repo: 09-21 ✅ ·
+  09-14 ❌ · 09-07 ❌ (from the 09-23 section). The old-repo runs on 09-28 and
+  10-05 were not visible to this job.
+- **Failure cause: the same Playwright browser-version drift as 09-07 and
+  09-14, now the 3rd occurrence.** Batch 1, step "Run scraper (Batch 1 —
+  competitors 1-25)" (job 114633761531) failed with `BrowserType.launch:
+  Executable doesn't exist at
+  /home/runner/.cache/ms-playwright/firefox-1543/firefox/firefox`. The pip
+  package `playwright` (unpinned, `requirements.txt`: `playwright>=1.41,<2.0`)
+  expects firefox-1543, but `npx playwright install --with-deps firefox`
+  (scrape.yml lines 85 and 176) installed a different revision. Batch 2 was
+  skipped, and the "Send Summary" job reported success, which hides the
+  failure.
+  - Fix (owner, `.github/workflows/scrape.yml`): change both `npx playwright
+    install --with-deps firefox` lines to `python -m playwright install
+    --with-deps firefox`. The browser then always matches the Python package.
+    The Node.js setup steps can be dropped too. An agent-side alternative
+    that does not touch CI: pin `playwright==<exact>` in `requirements.txt`.
+    This only works if the npx version also matches, so the workflow change
+    is the real fix.
+- Side effect to know about: the release is published only from batch 2.
+  Any batch-1 failure therefore means no data that week, and in a fresh repo
+  it means no release at all. Consider publishing the release with
+  `if: always()` from whichever job finishes last, or from the summary job.
+
+### Needing owner decision
+1. **CRITICAL, NEW: no competitor data exists in the Kinz-org repo.** The
+   first scrape after the migration failed (Playwright drift), so the
+   `weekly-scrape-data` release was never created. Fix item 2 below, then
+   re-run "Weekly Competitor Scrape" by hand (workflow_dispatch) rather than
+   waiting for Monday.
+2. **Playwright/firefox drift: 3rd failure (09-07, 09-14, 10-12).** Fix this
+   1-line change in `scrape.yml` (`npx playwright install` → `python -m
+   playwright install`, lines 85 and 176). Agents may not edit it.
+3. **CRITICAL, unchanged: batch 2 saves nothing** (scrape.yml inline
+   `python -c` step). Even after item 2 is fixed, all N-Z competitors stay
+   missing until this lands.
+4. Carried: FLORAISON wrong-price cluster; the seed-resurrection bug in
+   `seed_from_json.py` (all competitors read `is_active=1`); outlets and
+   price-history not available to this job.
+
+---
+
 ## Run: 2026-09-23
 
 **First run of the new cloud `cloud-kinz-analyst` job.** It reads the weekly
