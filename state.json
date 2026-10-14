@@ -1,7 +1,7 @@
 {
   "version": 2,
   "updated_at": "2026-10-11T21:00:00+00:00",
-  "rotation_cursor": 6,
+  "rotation_cursor": 3,
   "loops": {
     "repo-closed-loop": {
       "last_run": "2026-09-23T15:25:00+00:00",
@@ -69,7 +69,7 @@
       "consecutive_failures": 0
     },
     "kinz-polish": {
-      "last_run": "2026-10-12T00:58:55Z",
+      "last_run": "2026-10-14T00:54:16Z",
       "status": "idle",
       "consecutive_failures": 0,
       "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; first run here 2026-10-13."
