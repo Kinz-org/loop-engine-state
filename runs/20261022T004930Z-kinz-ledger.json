@@ -1,0 +1,23 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_011ujePfcM1VncmoWg79bKP5",
+  "started": "2026-10-22T00:49:30Z",
+  "ended": "2026-10-22T00:51:59Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 3,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/5",
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/4",
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/3"
+  ],
+  "summary": "Baseline green. PR #5 fixes the PDF pack: the data-quality warnings banner of EXECUTIVE_SUMMARY.md (a blockquote) was rendered as one run-on paragraph with literal '>'/'##', and numbered lists or rules directly under a paragraph line were swallowed into it. 3 regression tests, PDF-only, no figure change. Not merged because merges are denied by the session permission classifier; #3 and #4 (both green, neither a figure change) are still waiting too. Done by Opus 5.5 directly, no subagent.",
+  "errors": [
+    "merges denied by the auto-mode permission classifier this session (seen in kinz-upkeep); merge not attempted"
+  ]
+}
