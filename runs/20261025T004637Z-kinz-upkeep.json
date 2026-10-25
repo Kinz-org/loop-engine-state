@@ -1,0 +1,17 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01PCAMUdZAU9qxkXP2h6sV7Q",
+  "started": "2026-10-25T00:46:37Z",
+  "ended": "2026-10-25T00:47:54Z",
+  "status": "partial",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [],
+  "pr_urls": [],
+  "summary": "Nothing mergeable. btc-llm-sentiment #6/#7 are superseded (main already has tests/test_safe_pickle.py from #5) and now conflicted, but closing them was denied by the permission classifier. Still stuck: btc main red on Docker build (fix #4 on hold, edits ci.yml); kinz-secure-commerce-hub main red on Trivy SARIF; analytics-service-toolkit, kinz-fidelite, kinz-stock-sync have no Actions runs at all in Kinz-org; accounting #3 left to kinz-ledger.",
+  "errors": [
+    "Closing superseded btc-llm-sentiment #6 and #7 (comment + close) denied by the auto-mode permission classifier (External System Writes); not retried"
+  ]
+}
