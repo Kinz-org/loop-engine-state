@@ -1,0 +1,22 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_012FfBBKY9aX2o1Ku67i7u9Z",
+  "started": "2026-10-26T00:46:33Z",
+  "ended": "2026-10-26T00:48:05Z",
+  "status": "partial",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/3"
+  ],
+  "summary": "Labelled accounting #3 'hold' (changes report prose). Next.js-SaaS #27 (README, all green) is ready but the squash-merge was denied by the session permission check. Still stuck: btc #6/#7 superseded (close denied), btc main red on Docker build (#4 on hold), secure-commerce-hub main red on Trivy, analytics #4 has no checks because Actions never fires in analytics-service-toolkit/feed-quality-gate/kinz-fidelite/kinz-stock-sync.",
+  "errors": [
+    "Squash-merge of Next.js-SaaS #27 denied by the auto-mode permission classifier (Merge Without Review); not retried",
+    "Closing superseded btc-llm-sentiment #6/#7 denied (External System Writes); not retried"
+  ]
+}
