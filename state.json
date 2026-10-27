@@ -64,7 +64,7 @@
       "notes": "Retired 2026-09-23; replaced by kinz-digest."
     },
     "kinz-upkeep": {
-      "last_run": "2026-10-26T00:48:05Z",
+      "last_run": "2026-10-27T00:48:09Z",
       "status": "idle",
       "consecutive_failures": 0
     },
