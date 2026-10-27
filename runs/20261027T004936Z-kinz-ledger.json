@@ -1,0 +1,19 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01EzzwpHQQKXrYCrttKu8QUF",
+  "started": "2026-10-27T00:49:36Z",
+  "ended": "2026-10-27T00:54:39Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 3,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/7"
+  ],
+  "summary": "product_sales.csv counted draft quotations and cancelled orders as sales (+1,299.70 TND / 50 units on the committed extract). PR #7 filters to confirmed orders (product sales total 5,729.49 -> 4,429.78 TND), 3 tests, CI green; labelled hold because it changes a reported figure. Bug found and fixed by an Opus subagent, reviewed and shipped by the main session.",
+  "errors": []
+}
