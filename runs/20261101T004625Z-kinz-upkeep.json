@@ -1,0 +1,17 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01FRg7pHahNgMuenD2B3ueRM",
+  "started": "2026-11-01T00:46:25Z",
+  "ended": "2026-11-01T00:47:54Z",
+  "status": "success",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [],
+  "pr_urls": [],
+  "summary": "Nothing passes the merge rules. Next.js-SaaS Dependabot #28-#37: Security Scans red only on gitleaks (org needs a GITLEAKS_LICENSE secret; pnpm audit step is non-blocking). analytics-service-toolkit #4-#6: no checks at all (Actions never runs there). btc #7 red on Docker build (fix is #4, on hold, workflow edit). secure-commerce-hub #5 and main red on the Trivy step; findings are only in the Security tab, which this session cannot read.",
+  "errors": [
+    "Code scanning alerts API 403 for kinz-secure-commerce-hub; could not read the Trivy findings"
+  ]
+}
