@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01FRg7pJBqF5EZM4RAvyGVmZ",
+  "started": "2026-11-05T00:50:00Z",
+  "ended": "2026-11-05T00:52:30Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 6,
+  "repos_touched": ["kinz-accounting-analysis-20260623-102129"],
+  "pr_urls": ["https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/10"],
+  "summary": "Baseline green. sales_analysis.md called all 10 sale orders 'quotes converted to orders' though 2 are cancelled and 1 is a draft quotation. PR #10 adds sale_order_breakdown() and 6 tests; CI green, labelled hold because it changes report text (no figure changes). Done by the main session, no Opus escalation.",
+  "errors": []
+}
