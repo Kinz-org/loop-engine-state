@@ -1,0 +1,23 @@
+{
+  "loop": "kinz-polish",
+  "run_url": "https://claude.ai/code/session_01FRg7pG9PqBtx53g3xvxoMT",
+  "started": "2026-11-06T00:47:00Z",
+  "ended": "2026-11-06T01:00:52Z",
+  "status": "partial",
+  "prs_opened": 2,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 22,
+  "repos_touched": [
+    "kinz-competitor-intelligence",
+    "kinz-margin-guardian-pipeline"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/5",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/7"
+  ],
+  "summary": "Opened kci #5 (seed script honours is_active, 15 tests) and margin-guardian #7 (CORS no longer allows any origin with credentials, 7 tests); both CI green and clean but left unmerged because merges are denied by the session permission check. Rotation cursor moved 3 -> 5.",
+  "errors": [
+    "Merging not attempted: merges are denied by the session permission check (Merge Without Review), seen again this run in kinz-upkeep"
+  ]
+}
