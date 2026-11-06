@@ -1,0 +1,19 @@
+{
+  "loop": "kinz-heartbeat",
+  "run_url": "https://claude.ai/code/session_01FRg7pJgsyZtsWpgDofuCEx",
+  "started": "2026-11-06T05:46:02Z",
+  "ended": "2026-11-06T05:48:45Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 1,
+  "prs_closed": 0,
+  "tests_added": 1,
+  "repos_touched": [
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/6"
+  ],
+  "summary": "Nothing landed today; fixed seed_from_json so it honours is_active in kinz-competitor-intelligence (PR #6, with a regression test). CI green, squash-merged.",
+  "errors": []
+}
