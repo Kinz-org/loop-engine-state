@@ -39,3 +39,16 @@ exact 30 / 0.6 / 0.85 = 58.8235…. A floor of 58.824 would fail check 2's
 `floor - 0.001 alerts` half. Check 2 is the one that matters (the floor must agree with
 the engine that actually raises the alerts), so check 4's expected number was corrected
 to the engine-consistent value. The original text is kept above for the record.
+
+## Verdict (fresh Opus judge, 2026-11-07): VERIFIED
+
+PR: https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/8 (branch at 74be225).
+
+1. **PASS.** `pytest tests/test_price_floor.py -q` gives 101 passed (17 test functions, parametrized).
+2. **PASS.** The judge's own snippet against `compute_product_margins` (40%, 0.85) shows no alert at the floor and a B2B alert at floor − 0.001 for all five demo products. Floors: Argan 37.252, Prickly Pear 43.134, Black Seed 18.626, Rosemary 11.764, Coffret 54.898.
+3. **PASS.** `--seed 42` prints 5 rows with Floor and Headroom columns. Only Argan Oil 100ml is BELOW FLOOR, matching `demo.py --seed 42`'s only ALERT row, and the competitor prices are identical in both outputs.
+4. **PASS.** `--cogs 30` prints 58.819 TND. The judge independently scanned 58.700 to 58.999 with the engine alone and confirmed 58.819 is the lowest price with no alert (B2B margin is 39.99% at 58.818). The amendment's reasoning holds.
+5. **PASS.** `--threshold 100` exits 2 with a single-line `error: …` message and no traceback.
+6. **PASS.** `ruff check .` is clean. The branch gives 189 passed and 1 skipped; `origin/main` gives 88 passed and the same 1 skip (`astk` not importable). The difference, 101, is exactly the new tests.
+
+CI on the PR: Python 3.11 and 3.12 green, Docker smoke test still running when this was recorded. The merge was not attempted: this session's permission check denied PR merges earlier in the same run (kinz-upkeep), so the PR is left open for kinz-upkeep or Nassim.
