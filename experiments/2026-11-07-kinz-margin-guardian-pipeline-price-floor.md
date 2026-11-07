@@ -23,9 +23,19 @@ Repo: Kinz-org/kinz-margin-guardian-pipeline. Branch: `claude/loop-creative-2026
    5 product rows that includes a floor column and a headroom column. The products it
    marks as below the floor are exactly the ones `python scripts/demo.py --seed 42`
    marks `ALERT`.
-4. `python scripts/price_floor.py --cogs 30` prints a floor of `58.824` TND
-   (30 / (1 - 0.40) / 0.85 = 58.8235…, rounded up to the millime).
+4. `python scripts/price_floor.py --cogs 30` prints a floor of `58.819` TND.
+   *(Amended before any code was written, see the note below. Originally `58.824`.)*
 5. `python scripts/price_floor.py --cogs 30 --threshold 100` exits non-zero with a
    one-line error message and no Python traceback.
 6. `ruff check .` is clean and `pytest tests/ -q` passes on the branch (no new failures
    or skips compared with `main`).
+
+### Amendment to check 4 (made before any code was written)
+
+Checking the arithmetic against the engine showed that checks 2 and 4 contradicted each
+other. `compute_product_margins` rounds margins to 2 decimals before comparing them with
+the threshold, so at COGS 30 the engine raises no alert down to 58.819 TND, below the
+exact 30 / 0.6 / 0.85 = 58.8235…. A floor of 58.824 would fail check 2's
+`floor - 0.001 alerts` half. Check 2 is the one that matters (the floor must agree with
+the engine that actually raises the alerts), so check 4's expected number was corrected
+to the engine-consistent value. The original text is kept above for the record.
