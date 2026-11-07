@@ -1,0 +1,23 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01FRg7pJ396tGZa7mtv5avxA",
+  "started": "2026-11-07T00:46:22Z",
+  "ended": "2026-11-07T00:53:00Z",
+  "status": "partial",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "feed-quality-gate"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/feed-quality-gate/pull/6",
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/5",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/7"
+  ],
+  "summary": "Merging is still blocked: the session permission check denied the squash-merge of feed-quality-gate #6 for the fourth run in a row, so three green PRs wait (feed-quality-gate #6, kinz-competitor-intelligence #5, kinz-margin-guardian-pipeline #7). Otherwise unchanged: Next.js-SaaS Dependabot #28-#37 red on Security Scans, analytics-service-toolkit #4-#6 have no checks, btc #7/#8 red on Docker build (fix #4 on hold, workflow edit), secure-commerce-hub #5 red on the security scan, accounting #8/#9/#10 on hold.",
+  "errors": [
+    "Merge of feed-quality-gate #6 denied by the session permission check (Merge Without Review), fourth run in a row"
+  ]
+}
