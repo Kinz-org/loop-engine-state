@@ -1,0 +1,21 @@
+{
+  "loop": "kinz-polish",
+  "run_url": "https://claude.ai/code/session_01FRg7pGYJz11aVaPuzCRX4A",
+  "started": "2026-11-09T00:49:00Z",
+  "ended": "2026-11-09T00:52:21Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 8,
+  "repos_touched": [
+    "Next.js-SaaS"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/38"
+  ],
+  "summary": "Only Next.js-SaaS was eligible (every other rotation repo has an open claude/loop- PR). Opened #38: 8 tests for getOrgMembership/org-context (IMPROVEMENTS item 9), verified to fail without the ACTIVE check; left unmerged because merges are denied. Rotation cursor stays at 5 (whole list walked).",
+  "errors": [
+    "Merge not attempted: merges are denied by the session permission check, seen again this run in kinz-upkeep"
+  ]
+}

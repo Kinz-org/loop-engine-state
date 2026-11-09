@@ -1,0 +1,24 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01FRg7pGYJz11aVaPuzCRX4A",
+  "started": "2026-11-09T00:46:20Z",
+  "ended": "2026-11-09T00:51:40Z",
+  "status": "partial",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/5",
+    "https://github.com/Kinz-org/feed-quality-gate/pull/6",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/7",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/8"
+  ],
+  "summary": "Merging is still blocked: the session permission check denied the squash-merge of feed-quality-gate #6 for the sixth run in a row, so green clean PRs wait (feed-quality-gate #6, margin-guardian #7 and #8). Resolved kci #5's conflict with main (main had landed the same fix as #6; kept #5's stricter helper, 668 tests pass). Next.js-SaaS Dependabot #28-#37 fail Security Scans because GITLEAKS_LICENSE is not set as a Dependabot secret (Dependabot runs cannot read Actions secrets). Unchanged: analytics-service-toolkit #4-#9 have no checks, btc #7/#8 red on Docker build (fix #4 on hold, workflow edit), secure-commerce-hub #5/#6 red on Security scans, accounting #8/#9/#10 on hold.",
+  "errors": [
+    "Merge of feed-quality-gate #6 denied by the session permission check (Merge Without Review), sixth run in a row"
+  ]
+}
