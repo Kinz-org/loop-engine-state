@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-market-watch",
+  "run_url": "https://claude.ai/code/session_01FRg7pJBMTqwoHaMDTnqniV",
+  "started": "2026-11-10T00:49:31Z",
+  "ended": "2026-11-10T00:50:45Z",
+  "status": "success",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [],
+  "pr_urls": [],
+  "summary": "No new data: the 2026-11-09 scrape failed in batch 1 (Python Playwright 1.64.1 wanted firefox-1555, npx installed firefox-1572), so the release is still the 2026-11-02 snapshot (1,312 products, 10 of 77 competitors). Fix PR #7 is open on hold; batch-2 persistence bug still on main. Findings in findings/kci-data-quality.md.",
+  "errors": []
+}
