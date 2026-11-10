@@ -1,0 +1,27 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01FRg7pJBMTqwoHaMDTnqniV",
+  "started": "2026-11-10T00:46:51Z",
+  "ended": "2026-11-10T00:48:59Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 1,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "feed-quality-gate",
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/feed-quality-gate/pull/6",
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/7",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/7",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/8",
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/5",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/38"
+  ],
+  "summary": "Merged feed-quality-gate #6 (first merge in seven runs); the next merges (margin-guardian #7, kci #5, Next.js-SaaS #38, all green and rule-clean, plus margin-guardian #8) were denied by the session permission check and wait. The weekly kci scrape failed on 2026-11-09 because npx playwright installs a Firefox build the Python package does not use; fix PR kci #7 edits scrape.yml, so it is on hold for Nassim. Unchanged: Next.js-SaaS Dependabot #28-#37 red on Security Scans (GITLEAKS_LICENSE needed as a Dependabot secret), analytics-service-toolkit #4-#10 have no checks, btc #7/#8 red on Docker build (fix #4 on hold), secure-commerce-hub #5/#6 red on Security scans, accounting #8/#9/#10 on hold.",
+  "errors": [
+    "Squash-merge of kinz-margin-guardian-pipeline #7 (and the batch with kci #5, Next.js-SaaS #38) denied by the session auto-mode permission check; not retried"
+  ]
+}
