@@ -1,0 +1,19 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01FRg7pJBMTqwoHaMDTnqniV",
+  "started": "2026-11-10T00:51:11Z",
+  "ended": "2026-11-10T00:56:54Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 18,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/11"
+  ],
+  "summary": "Baseline green. The sales and risk reports always claimed the top customers hold 'a significant share' of revenue (Credit Risk MEDIUM), but the top two are the walk-in placeholders Passagers/Passagers boutique (49.9%), and the top 5 named buyers hold 4.8%. PR #11 computes and tiers it (18 tests), CI green, labelled hold because it changes report text (Credit Risk MEDIUM to LOW). No figure changes. Done by the main session, no Opus escalation.",
+  "errors": []
+}
