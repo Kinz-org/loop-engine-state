@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-polish",
+  "run_url": "https://claude.ai/code/session_01FRg7pGMHTbj7zvocN8T2VT",
+  "started": "2026-11-11T00:53:00Z",
+  "ended": "2026-11-11T00:51:18Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 5,
+  "repos_touched": ["feed-quality-gate"],
+  "pr_urls": ["https://github.com/Kinz-org/feed-quality-gate/pull/7"],
+  "summary": "Only feed-quality-gate was eligible (every other rotation repo has an open claude/loop- PR). Opened #7: freshness now ignores future-dated rows, so one 2099 timestamp can no longer hide a stale feed; 5 regression tests fail on the old code, CI green via workflow_dispatch. Left unmerged because merges are denied by the session permission check. Rotation cursor stays at 5 (whole list walked).",
+  "errors": ["Merge not attempted: squash-merges were denied by the session permission check earlier this run in kinz-upkeep"]
+}
