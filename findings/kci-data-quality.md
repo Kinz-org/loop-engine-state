@@ -3,6 +3,92 @@
 Updated by the `kinz-competitor-analyst` scheduled task. Same headings every
 run so diffs are meaningful; counts first, then the specific rows that changed.
 
+## Run: 2026-11-17
+
+**Fresh data.** The 2026-11-16 scheduled scrape (run 43793823035, `main` at
+3fca27e) succeeded in all three jobs and refreshed the `weekly-scrape-data`
+release: "Last updated 2026-11-16 03:05 UTC" (under 1 day old at check time).
+The database is rebuilt from scratch each week, so every figure below is the
+2026-11-16 snapshot.
+
+### State
+- Competitors: 77 total, 77 active, 49 active with a website. *(unchanged)*
+- Products: **1,304** (1,279 priced), across **9** of 77 competitors.
+  *(was 1,312 / 1,280 across 10)*
+- Price history: 1,279 rows, one snapshot (2026-11-16). *(was one 2026-11-02
+  snapshot; history is still not carried across weeks)*
+- Newest `products.scraped_at`: 2026-11-16 03:55 (as stored). *(new week)*
+- Catalogues: BIO TUNISIA MAHDIA 1,025, BAHIA COSMETIC 98, HERBÉOS 88 (+9),
+  FLORAISON 48 (+4), Asmin 18 (+3), BAYA BEAUTY 13, BIO VALLEY 7, AZATIM 5,
+  BIOMED 2. **AGROLINE dropped out (was 24)**: its page timed out after 30 s
+  this week, and because the DB is rebuilt weekly, a single failed fetch
+  erases a competitor's catalogue.
+
+### Scrape coverage
+- `scraping_logs`: 25 rows, all 2026-11-16, 11 `success`, 14 `failed`
+  *(was 12/13)*. All 25 are batch-1 competitors.
+- 40 of 49 active competitors with a website have no products; 24 have no
+  `scraping_logs` row at all — exactly the batch-2 list (ALMAFLORE through
+  TVH sarl, including KINZ's own site).
+- **Batch-2 persistence bug: still present and confirmed in this week's log**
+  (job 133061779884). Batch 2 ran and the log shows real yields — ORGANICA
+  132, PERFECT BIO 126, ECOVILLAGE 59, STÉ KINZ 40, KARINA 31, MELIORA 14,
+  PUNICA 13, TVH 11, RIVILIA 7, NURESSENCE 5 (**438 products**) — yet the
+  published DB holds no batch-2 product and no batch-2 log row. Cause:
+  `.github/workflows/scrape.yml` lines ~218-235 call
+  `scrape_multiple_competitors()` from an inline `python -c` (`.offset(25)`),
+  which returns results but never saves products or `ScrapingLog` rows. Fix
+  (unchanged): replace that step with
+  `python scripts/manual_scrape.py --type web --offset 25` (`--offset` exists
+  since PR #3).
+- Batch-1/2 failures are mostly `NS_ERROR_UNKNOWN_HOST` (dead domains, ~20
+  competitors), plus 2 `SSL_ERROR_BAD_CERT_DOMAIN` (MED EXOIL, NOPALISSE),
+  PHYTOESSENTIA HTTP 403, and timeouts (AGROLINE, HERBES DE TUNISIE). The
+  dead domains are a seed-data question (see owner item 3), not code.
+- Playwright drift (last week's failure): **did not recur, by luck.** The
+  runner got Python `playwright` 1.65.2 and `npx` installed 1.65.1, which
+  share Firefox build 1572. `scrape.yml` lines 85 and 176 still use
+  `npx playwright install`; PR #7 (fix, `hold` label) is still open, unmerged,
+  last updated 2026-11-10.
+
+### Data quality
+- missing price 25 *(was 32)* · missing category 163 *(unchanged)* · missing
+  description 17 *(unchanged)* · price = 0: 0 · prices < 1 or > 1,000 TND: 0.
+- Unpriced catalogues: BIO VALLEY 7/7 and BIOMED 2/2 have no price at all
+  (HTML scraper finds names but no price selector).
+- Pagination regression: **not present** (no competitor at exactly 100).
+- FLORAISON 350.0 TND cluster: **15 products** *(was 11)*, FLORAISON's maximum
+  price — still looks like a placeholder/"from" price, not real. Other repeated
+  prices (BAHIA 20 TND ×16, 30 ×11) look like genuine price points.
+- `/blogs/` pages saved as products: 2 at FLORAISON *(was 3)*. Proposed fix
+  unchanged: in the save path skip any `product_url` containing `/blogs/`,
+  with a test.
+
+### Price movements
+- Not measurable: `price_history` holds a single snapshot (2026-11-16), and 0
+  products have more than one recorded price. The release replaces the DB
+  each week, so no week-over-week comparison is possible from it.
+
+### Workflow health
+- `scrape.yml`: **2026-11-16 ✅** · 2026-11-09 ❌ (Playwright mismatch) ·
+  2026-11-02 ✅ · 2026-10-26 ✅ · 2026-10-19 ✅. Note "success" still hides the
+  batch-2 data loss.
+- CI on `main`: green (push run 2026-11-12, 3fca27e = PR #5 seed `is_active`).
+
+### Needing owner decision
+1. **CRITICAL, unchanged: batch 2 saves nothing** — this week 438 scraped
+   products from 24 competitors were thrown away. Edit the batch-2 step in
+   `scrape.yml` (~lines 218-235) to
+   `python scripts/manual_scrape.py --type web --offset 25`.
+2. **Merge PR #7** (Playwright installed via `python -m playwright`): this
+   week passed only because npm and PyPI happened to ship matching versions.
+   https://github.com/Kinz-org/kinz-competitor-intelligence/pull/7
+3. Seed hygiene: ~20 competitors fail every week on unknown hosts. Mark them
+   `"is_active": false` in the seed and the `COMPETITORS_SEED_JSON` secret
+   (honoured since PR #5).
+4. Price history: decide whether the release should keep history across weeks
+   (today one failed fetch also wipes a competitor's catalogue, e.g. AGROLINE).
+
 ## Run: 2026-11-10
 
 **No new data this week.** The 2026-11-09 scheduled scrape (run 42552227167)
@@ -379,124 +465,3 @@ database was downloaded and none of the data checks could run.
    price-history not available to this job.
 
 ---
-
-## Run: 2026-09-23
-
-**First run of the new cloud `cloud-kinz-analyst` job.** It reads the weekly
-`weekly-scrape-data` GitHub release (published Mondays), not the local DB the
-retired laptop job used. Numbers below are a new baseline, not directly
-comparable to the 09-01 section below (different data source).
-
-### State
-- Competitors: 77 total, 77 active (`is_active=1`) — seed-resurrection bug
-  unchanged: `seed_from_json.py` hardcodes `is_active=True` on every seed, so
-  all 77 (including locally-retired dead sites) read active in every cloud
-  release. 49 have a website.
-- Products: 1,336 (1,314 priced), across only **10 of 77 competitors** —
-  batch 2 still isn't persisting (see Scrape coverage).
-- Price history rows: 1,314, all recorded 2026-09-21 08:07 UTC — a single
-  snapshot; the cloud release doesn't carry prior weeks' history.
-- Newest `products.scraped_at`: 2026-09-21 09:07:25 UTC. Release published
-  2026-09-21 08:23 UTC — 2 days old, fresh.
-- Outlets (`parapharmacies` table): **0 rows** in this release. The
-  ~3,923-row outlets dataset the retired laptop job reported (Google Maps
-  scrape, hand-entered sales-pipeline fields) lives only in the local DB —
-  the weekly workflow's seed step only ever seeds `competitors`, never
-  `parapharmacies`. This job has no access to that data; see item 5 below.
-
-### Scrape coverage
-- 39 of 49 active+website competitors have zero products. 24 of those have
-  zero `scraping_logs` rows at all — the batch-2 (N–Z, 24 competitors)
-  persistence bug is still happening, confirmed again this run.
-- Batch 2's own log this run (job 106258699092, "Run scraper (Batch 2 —
-  competitors 26-49)") shows it did real, successful scraping — e.g.
-  "Scraped ECOVILLAGE NATURAL BEAUTY: 77 unique products... in 399.48s",
-  "Scraped KARINA TUNISIE: 25 unique products", then "Batch 2: 24
-  competitors to scrape" / "Done: 24 results" — and none of it reached the
-  database. All 10 competitors with products, and all 1,336 products, are
-  exactly what batch 1 (A–M) wrote. Root cause and fix unchanged from the
-  09-01 note: the inline `python -c` step only calls the pure
-  `scrape_multiple_competitors()`, which returns a list and never touches
-  the DB; only `manual_scrape.py` writes to it, and batch 2 bypasses it.
-- The other 15 zero-product competitors (with scraping_logs rows) are
-  batch-1 scrapes that logged `failed` — 13 of the 25 batch-1
-  `scraping_logs` rows are `failed`, 12 `success`.
-
-### Data quality
-- missing_price: 22 · missing_category: 162 · missing_description: 17 ·
-  price=0: 0 (measured against the 1,336 products this release actually
-  has — not comparable to the old 122/161/93 counts against the larger
-  frozen local catalogue).
-- **FLORAISON natural beauty wrong-price cluster still present, price
-  shifted 350→400 TND.** 9 products (was 13) pinned to exactly 400.0 TND;
-  the rest of its catalogue ranges 16–145 TND. Still includes one blog post
-  scraped as a product: "Le Collagène dans les Soins : Mythe ou Réalité ?".
-  Same root cause as 08-28 (a banner/promo price element matched instead of
-  the real price) — the fixed value moving 350→400 between runs suggests
-  it's picking up a live promotional banner, not a stale cached value.
-- No WooCommerce pagination regression: no competitor has exactly 100
-  products this run (largest is BIO TUNISIA MAHDIA at 1,014).
-- Other clusters seen (BAHIA COSMETIC 16× 20.0 TND / 11× 30.0 TND / 9×
-  25.0 TND; HERBÉOS 10× 25.0 TND; BIO TUNISIA MAHDIA 8× each of
-  6.85/25.0/38.2 TND) are plausible for catalogues this size (98 and 1,014
-  products respectively) — not flagged, unlike FLORAISON where the cluster
-  price sits far outside that competitor's own range.
-
-### Price movements
-- None detected — cannot be, structurally. `price_history` in this release
-  only ever holds the current week's snapshot (all 1,314 rows recorded
-  2026-09-21 08:07 UTC; 0 products have more than one row). Movement
-  detection needs either the local DB (which accumulates history) or this
-  job keeping its own week-over-week snapshot — neither is in scope for a
-  read-only job working off one release download.
-
-### Workflow health
-- Last 5 scheduled `scrape.yml` runs: 09-21 ✅ · 09-14 ❌ · 09-07 ❌ ·
-  08-31 ✅ · 08-24 ✅.
-- **New failure mode, not the previously-documented secret-unset pattern.**
-  09-07 and 09-14 both failed identically at "Run scraper (Batch 1 —
-  competitors 1-25)" (batch 2 then skipped — it depends on batch 1's DB
-  artifact): `playwright._impl._errors.Error: BrowserType.launch:
-  Executable doesn't exist at
-  /home/runner/.cache/ms-playwright/firefox-1538/firefox/firefox`.
-  - Root cause: `requirements.txt` pins `playwright>=1.41,<2.0` (no exact
-    version), so `pip install` picks up whatever's newest that week.
-    Browsers are installed separately via `npx playwright install
-    --with-deps firefox` (scrape.yml lines 85 and 176) — the **Node** CLI,
-    resolved by `npx` to its own latest version, independent of the
-    pip-installed **Python** package. On 09-14, pip installed
-    `playwright==1.62.0` (expects browser revision firefox-1538) while
-    `npx playwright install` downloaded firefox-1543 — mismatch, launch
-    fails. On 09-21, pip installed `playwright==1.63.0` and the two
-    happened to line up again, so it passed. The same failure will recur
-    any week these two independently-resolved versions drift apart.
-  - Fix (in scrape.yml, so it's an owner call): replace `npx playwright
-    install --with-deps firefox` with `python -m playwright install
-    --with-deps firefox` in both the batch-1 and batch-2 jobs, so the
-    browser binary always matches the package that launches it. Pinning
-    `playwright==<exact>` in requirements.txt would also close it.
-
-### Needing owner decision
-1. **CRITICAL — cloud scrape batch 2 still saves nothing** (confirmed again
-   this run; 4th+ consecutive weekly occurrence). Batch 2 scrapes live and
-   successfully but never writes to the DB. Fix: give `manual_scrape.py` an
-   `--offset` flag, have batch 2 call `manual_scrape.py --offset 25`
-   instead of its inline one-liner. ~40% of the catalogue (all N–Z
-   competitors) is silently missing from every weekly release until this
-   lands.
-2. **NEW — playwright/firefox version-drift bug caused 2 consecutive full
-   scrape failures** (09-07, 09-14). Fix is a 1-line change in
-   `.github/workflows/scrape.yml` (`npx playwright install` → `python -m
-   playwright install`), which agents may not edit.
-3. FLORAISON natural beauty wrong-price cluster (9 products @ 400 TND, was
-   13 @ 350 TND) + one blog post scraped as a product — likely a
-   promotional banner element being matched. No data mutation done.
-4. Seed-resurrection bug in `seed_from_json.py` — all 77 competitors
-   (including locally-retired ones) still read `is_active=1` in every
-   cloud release.
-5. This job cannot see the 3,923-row outlets (`parapharmacies`) dataset or
-   real price-movement history — both live only in the local DB, which the
-   retired laptop job used and this cloud job doesn't have access to. If
-   outlets QA or week-over-week price tracking still matters, it needs
-   either the local DB attached to this routine or the weekly workflow
-   extended to publish these.
