@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01FRg7pF5JkJh7hFW2DoT2kx",
+  "started": "2026-11-17T00:49:52Z",
+  "ended": "2026-11-17T00:55:26Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 1,
+  "prs_closed": 0,
+  "tests_added": 15,
+  "repos_touched": ["kinz-accounting-analysis-20260623-102129"],
+  "pr_urls": ["https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/14"],
+  "summary": "Baseline green. CI never ran the report generators (it only checked the committed reports, which are still from 2026-10-11, older than six merged generator changes). PR #14 adds a test that runs process_data.py and generate_reports.py in a scratch copy and checks the new output; it is test-only and merged after CI passed. The Monthly Analysis workflow did not fire on 2026-11-01: it has only one run ever, a manual dispatch on 2026-10-11. Flagged for Nassim. Done by the main session, no Opus escalation.",
+  "errors": []
+}
