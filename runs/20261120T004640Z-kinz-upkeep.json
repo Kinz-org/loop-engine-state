@@ -1,0 +1,24 @@
+{
+  "loop": "kinz-upkeep",
+  "run_url": "https://claude.ai/code/session_01FRg7pHwx4j8p2AK3ZB1Mt7",
+  "started": "2026-11-20T00:46:40Z",
+  "ended": "2026-11-20T00:48:12Z",
+  "status": "success",
+  "prs_opened": 0,
+  "prs_merged": 5,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [
+    "kinz-margin-guardian-pipeline",
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/8",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/12",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/13",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/14",
+    "https://github.com/Kinz-org/kinz-margin-guardian-pipeline/pull/15"
+  ],
+  "summary": "Merged green margin-guardian Dependabot #12-#15 and kci #8 (merge via GitHub MCP worked this time); #16 went into conflict and Dependabot was asked to rebase; #11 edits ci.yml so it waits for Nassim. Unchanged: Next.js-SaaS #28-#37 red (GITLEAKS_LICENSE), analytics-service-toolkit #4-#10 no checks, btc #7/#8 red on Docker build (#4 hold), secure-commerce-hub #5/#6 red on Security scans, kci #7 and accounting #8-#15 on hold.",
+  "errors": []
+}
