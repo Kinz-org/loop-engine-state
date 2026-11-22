@@ -8,8 +8,23 @@
   "prs_merged": 0,
   "prs_closed": 0,
   "tests_added": 0,
-  "repos_touched": ["Next.js-SaaS"],
-  "pr_urls": ["https://github.com/Kinz-org/Next.js-SaaS/pull/28"],
-  "summary": "Next.js-SaaS Dependabot #28-#37 were red only because their base predated the Next/vitest security bumps on main; updated all 10 branches from main, #28 went fully green, the rest were still running. The squash-merge of #28 was denied by this session's permission layer, so nothing was merged; tomorrow's run can merge them. Still stuck as before: margin-guardian #11 edits ci.yml; analytics-service-toolkit #4-#10 have no checks (Actions has never run there); btc #7/#8 red on Docker build (fix #4 on hold); secure-commerce-hub #5/#6 red on Trivy Security scans (unpatched upstream CVE); kci #7 and accounting #8-#15 on hold.",
-  "errors": ["PUT /pulls/28/merge denied by the session's auto-mode permission classifier; not retried per _common.md §5."]
+  "repos_touched": [
+    "Next.js-SaaS"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/28",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/29",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/30",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/31",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/32",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/33",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/34",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/35",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/36",
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/37"
+  ],
+  "summary": "Next.js-SaaS Dependabot #28-#37 were red only because their base predated the Next/vitest security bumps on main; updated all 10 branches from main, all 10 then went fully green and conflict-free (checked 00:58Z). The squash-merge of #28 was denied by this session's permission layer, so nothing was merged; tomorrow's run can merge them. Still stuck as before: margin-guardian #11 edits ci.yml; analytics-service-toolkit #4-#10 have no checks (Actions has never run there); btc #7/#8 red on Docker build (fix #4 on hold); secure-commerce-hub #5/#6 red on Trivy Security scans (unpatched upstream CVE); kci #7 and accounting #8-#15 on hold.",
+  "errors": [
+    "PUT /pulls/28/merge denied by the session's auto-mode permission classifier; not retried per _common.md \u00a75."
+  ]
 }
