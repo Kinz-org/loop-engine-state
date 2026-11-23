@@ -1,0 +1,21 @@
+{
+  "loop": "kinz-heartbeat",
+  "run_url": "https://claude.ai/code/session_01FRg7pGTvp9iX91rH4uwTU3",
+  "started": "2026-11-23T05:46:28Z",
+  "ended": "2026-11-23T05:51:33Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 7,
+  "repos_touched": [
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/9"
+  ],
+  "summary": "Nothing had landed today. Stalest repos ruled out (no Actions or red main), so fixed kinz-competitor-intelligence IMPROVEMENTS item: edit_competitor.py no longer edits the first match on an ambiguous partial name (7 tests, 3 fail on old code). CI green, but the merge call was denied by the session permission check; left open for upkeep.",
+  "errors": [
+    "squash-merge of kinz-competitor-intelligence#9 denied by the session permission check"
+  ]
+}

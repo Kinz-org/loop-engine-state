@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-digest",
+  "run_url": "https://claude.ai/code/session_01FRg7pGTvp9iX91rH4uwTU3",
+  "started": "2026-11-23T05:49:00Z",
+  "ended": "2026-11-23T05:51:33Z",
+  "status": "success",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [],
+  "pr_urls": [],
+  "summary": "Wrote reports/weekly-2026-W48.md: 13 PRs merged; every cloud job ran; merges denied by the permission check on 19, 22 and 23 Nov; 7/7 lab verdicts VERIFIED.",
+  "errors": []
+}
