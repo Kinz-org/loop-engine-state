@@ -1,0 +1,15 @@
+{
+  "loop": "kinz-market-watch",
+  "run_url": "https://claude.ai/code/session_01FRg7pJNjaXvSn39wyKSXP6",
+  "started": "2026-11-24T00:47:40Z",
+  "ended": "2026-11-24T00:48:50Z",
+  "status": "success",
+  "prs_opened": 0,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 0,
+  "repos_touched": [],
+  "pr_urls": [],
+  "summary": "2026-11-23 snapshot: 1,294 products across 9 of 77 competitors. Batch-2 bug still drops every N-Z product (443 this week); new: zero-product scrapes logged as success (AGROLINE) and FLORAISON section headings saved as products.",
+  "errors": []
+}
