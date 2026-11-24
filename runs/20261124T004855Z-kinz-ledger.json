@@ -1,0 +1,19 @@
+{
+  "loop": "kinz-ledger",
+  "run_url": "https://claude.ai/code/session_01FRg7pJNjaXvSn39wyKSXP6",
+  "started": "2026-11-24T00:48:55Z",
+  "ended": "2026-11-24T00:52:58Z",
+  "status": "success",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 8,
+  "repos_touched": [
+    "kinz-accounting-analysis-20260623-102129"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-accounting-analysis-20260623-102129/pull/16"
+  ],
+  "summary": "PR #16 replaces financial_analysis.md's fixed 'early-stage growth phase' line (which contradicted EXECUTIVE_SUMMARY.md's 'volume is established' on 216 invoices) with a derived monthly-range observation; text only, CI green, labelled hold since it changes report prose. Main session only, no Opus escalation.",
+  "errors": []
+}
