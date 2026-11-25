@@ -1,0 +1,21 @@
+{
+  "loop": "kinz-polish",
+  "run_url": "https://claude.ai/code/session_01FRg7pHNwSnvYQdrnfCXChB",
+  "started": "2026-11-25T00:52:25Z",
+  "ended": "2026-11-25T00:57:11Z",
+  "status": "success",
+  "prs_opened": 2,
+  "prs_merged": 2,
+  "prs_closed": 0,
+  "tests_added": 23,
+  "repos_touched": [
+    "Next.js-SaaS",
+    "feed-quality-gate"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/Next.js-SaaS/pull/45",
+    "https://github.com/Kinz-org/feed-quality-gate/pull/12"
+  ],
+  "summary": "Next.js-SaaS #45 fixes the open redirect in /api/org/switch (safeRedirectPath helper, 20 tests). feed-quality-gate #12 puts the Parquet reader under test (pyarrow in [dev], 3 tests). Both merged on green CI. Cursor 5 -> 3.",
+  "errors": []
+}
