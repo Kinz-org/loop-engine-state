@@ -46,10 +46,9 @@
       "notes": "Retired 2026-09-23; replaced by kinz-market-watch."
     },
     "kinz-ledger": {
-      "last_run": "2026-11-24T00:52:58Z",
+      "last_run": "2026-11-26T00:49:06Z",
       "status": "idle",
-      "consecutive_failures": 0,
-      "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; first run here 2026-10-13."
+      "consecutive_failures": 0
     },
     "kinz-heartbeat": {
       "last_run": "2026-11-25T05:47:07Z",
