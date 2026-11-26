@@ -51,7 +51,7 @@
       "consecutive_failures": 0
     },
     "kinz-heartbeat": {
-      "last_run": "2026-11-25T05:47:07Z",
+      "last_run": "2026-11-26T05:51:20Z",
       "status": "idle",
       "consecutive_failures": 0,
       "notes": "Kinz-org engine, created 2026-10-11 from the nassim0014 state; first run here 2026-10-13."
