@@ -1,0 +1,21 @@
+{
+  "loop": "kinz-polish",
+  "run_url": "https://claude.ai/code/session_01FRg7pF7xz1NDctzLb4JYtR",
+  "started": "2026-11-27T01:05:00Z",
+  "ended": "2026-11-27T00:59:34Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 8,
+  "repos_touched": [
+    "feed-quality-gate"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/feed-quality-gate/pull/13"
+  ],
+  "summary": "Only feed-quality-gate was free (every other rotation repo has an open loop PR). #13 adds a row_count check so an empty feed fails even with freshness off, and adds 2 newly reproduced backlog items. CI is green (via workflow_dispatch), but the PR is left open because merging is denied in this session. Cursor stays at 3.",
+  "errors": [
+    "Merging is denied by the session's permission classifier (seen in kinz-upkeep the same run); #13 not merged, not retried"
+  ]
+}
