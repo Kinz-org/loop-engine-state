@@ -1,0 +1,21 @@
+{
+  "loop": "kinz-lab",
+  "run_url": "https://claude.ai/code/session_01FRg7pJeUs742rzWDJRXnuL",
+  "started": "2026-11-28T00:49:00Z",
+  "ended": "2026-11-28T00:52:40Z",
+  "status": "partial",
+  "prs_opened": 1,
+  "prs_merged": 0,
+  "prs_closed": 0,
+  "tests_added": 25,
+  "repos_touched": [
+    "kinz-competitor-intelligence"
+  ],
+  "pr_urls": [
+    "https://github.com/Kinz-org/kinz-competitor-intelligence/pull/11"
+  ],
+  "summary": "Experiment: KINZ price positioning report (scripts/kinz_price_position.py) in kinz-competitor-intelligence, PR #11: each KINZ product against competitor prices in its category (median, P25-P75, percentile, below/within/above). A fresh Opus judge VERIFIED all 5 checks and CI is green, but it is not merged because merging was denied earlier in this run.",
+  "errors": [
+    "Merge not attempted: the merge call was denied by the permission classifier earlier in this run (kinz-upkeep), so per the rules it was not retried"
+  ]
+}

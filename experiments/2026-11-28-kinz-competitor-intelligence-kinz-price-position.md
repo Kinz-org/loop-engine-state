@@ -26,3 +26,31 @@ collects, without scraping anything.
 5. `pytest tests/test_kinz_price_position.py` passes, including a test that loads competitor
    prices from the test database (inactive competitors and null/zero prices excluded), and the
    full suite plus `ruff check .` still pass.
+
+## Verdict (fresh Opus judge, 2026-11-28): VERIFIED
+
+PR: https://github.com/Kinz-org/kinz-competitor-intelligence/pull/11 (branch
+`claude/loop-creative-20261128-kinz-price-position`, head 4a1d98c). CI: Tests and Lint green.
+
+1. PASS. `--demo` exited 0 with `DATABASE_URL` pointed at a scratch path (no file created),
+   sockets patched to fail, and `src.database`/`sqlalchemy` never imported. 5 rows with
+   Category, KINZ TND, Competitors, Median TND and Verdict columns; Huile quartiles
+   (23.5/28/32.5) checked by hand.
+2. PASS. Summary line "above: 1, within: 1, below: 1, too few competitors: 2" (Hydrolat has 2
+   competitors, under the default 3).
+3. PASS. `categorise()` calls `web_scraper.extract_category(..., product_text=name)`, which
+   reads the module's `CATEGORY_KEYWORDS`; no second list in the repo.
+   `test_categorise_follows_changes_to_scraper_keyword_list` monkeypatches that list and the
+   answer follows.
+4. PASS. `--csv` writes a header plus the same rows. CSV and workbook inputs are both tested;
+   the judge also built a workbook with the real `scrape_kinz.write_excel` (no network) and the
+   reader parsed it correctly, end to end through the CLI.
+5. PASS. 25/25 in the new test file, 704 in the full suite, `ruff check .` clean;
+   `test_load_competitor_prices_filters_inactive_kinz_and_bad_prices` excludes inactive, KINZ,
+   null, zero and uncategorised rows.
+
+Outside the checks: `--kinz` against an uninitialised database (no tables) fails with a raw
+`OperationalError` traceback rather than a clean message.
+
+Merge: not done. Merging was denied by the session's permission check earlier in this run
+(kinz-upkeep), so the PR is left open, ready, for kinz-upkeep or Nassim.
